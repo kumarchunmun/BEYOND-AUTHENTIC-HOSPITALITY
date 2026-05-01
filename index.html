@@ -3,6 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <header><nav>
+<!-- HEADER START -->
+<header class="main-header">
+
+    <!-- Logo + Company Name Together -->
+    <div class="brand">
+        <img src="logo.jpeg" alt="Logo">
+        <div class="text">
+            <h1>Beyond Authentic</h1>
+            <p>Hospitality</p>
+        </div>
+    </div>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <!-- Professional Font: Montserrat -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        body { margin: 0; padding: 0; background-color: #111; }
+
+        .header-container {
+            background-color: #000;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 2px solid #222;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .brand-logo {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        /* --- PROFESSIONAL 3D DESIGN --- */
+        .brand-name {
+            color: #FFFFFF;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin: 0;
+            
+            /* Clean Minimal 3D Shadow */
+            text-shadow: 
+                1px 1px 0px #888,
+                2px 2px 0px #555,
+                3px 3px 10px rgba(0,0,0,0.8);
+
+            /* Metallic Flash Animation */
+            animation: professionalFlash 3s infinite ease-in-out;
+        }
+
+        .brand-tagline {
+            color: #AAA; /* Muted silver color */
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 6px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* --- PROFESSIONAL ANIMATION --- */
+        /* Isme brightness aur shadow dono change honge */
+        @keyframes professionalFlash {
+            0%, 100% { 
+                opacity: 1; 
+                filter: brightness(100%);
+                text-shadow: 1px 1px 0px #888, 2px 2px 0px #555, 3px 3px 10px rgba(0,0,0,0.8);
+            }
+            50% { 
+                opacity: 0.85; 
+                filter: brightness(140%);
+                text-shadow: 0px 0px 15px rgba(255,255,255,0.6); /* Soft Glow effect */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-container">
+        <div class="brand-logo">
+            <div class="brand-name">Beyond Authentic</div>
+            <span class="brand-tagline">HOSPITALITY</span>
+        </div>
+    </header>
+
+</body>
+</html>
+</header>
+<!-- HEADER END -->
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+.main-header {
+    background: black;
+    padding: 25px;
+    margin: 10px;
+}
+
+/* Brand (logo + text in one line) */
+.brand {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo */
+.brand img {
+    width: 100px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* Text */
+.text h1 {
+    color: white;
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.text p {
+    color: #bbb;
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .brand img {
+        width: 45px;
+    }
+    .text h1 {
+        font-size: 16px;
+    }
+}
+</style>
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#contact">Contact</a>
@@ -33,7 +177,7 @@ body {
 
 .hero h1 {
     font-size: 50px;
-}
+} 
 
 .hero p {
     font-size: 20px;
@@ -109,116 +253,376 @@ footer {
 <section id="rooms">
 
     <div class="scrolling-container">
-    <div class="scrolling-text"> Facilities Provided By Our Company</div>
+    <div class="scrolling-text">"Welcome to Beyond Authentic Hospitality we Provide Superior facilities for your Comfort."</div>
 </div>
-    <h2 style="color: #c6397f; border-style: dashed; border-color: blueviolet;">𝓕𝓪𝓬𝓲𝓵𝓲𝓽𝓲𝓮𝓼 𝓟𝓻𝓸𝓿𝓲𝓭𝓮𝓭 𝓑𝔂 𝓞𝓾𝓻 𝓒𝓸𝓶𝓹𝓪𝓷𝔂</h2>
-    <p>
-        We offer 10 Premium guest house rooms and professional catering Services with comfortable stay the booking Of Guesthouse is done by Building Construction Department , Govt Of Bihar. Direct Bookings are not allowed,
-        and excellent service.
-     <table border="1" style="width:100%; border-collapse: collapse; text-align: left;"> 
-    <tr style="background-color: #2e8c69;">
-        <th style="padding: 10px;">Guest House  and Location</th>
-        <th style="padding: 10px;">In-charge / Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;"> [Nirikshan Bhawan] Rajbansi Nagar, Patna</td>
-        <td style="padding: 10px;">Mr. Rajeev Kumar, Mr. Chunmun Kumar</td>
-    </tr>
     
-       <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #13a5c9;">
-        <th style="padding: 10px;">Guest House  and Location</th>
-        <th style="padding: 10px;">In-charge / Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;"> [op sah] Malsalami, Patna City Near patna Sahib Gurudwara</td>
-        <td style="padding: 10px;">Mr Suraj Kumar</td>
-    </tr>
+    <p>
+        <!-- Add this Font Awesome link in your <head> if you don't have it -->
+<link rel="stylesheet" href="https://cloudflare.com">
 
-    <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #1db47c;">
-        <th style="padding: 10px;">Guest House and Location</th>
-        <th style="padding: 10px;">In-charge / Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;">[vidhan Sabha] Rajbasni Nagar Near R-Block,Saat Murti</td>
-        <td style="padding: 10px;">Dharmendra</td>
-    </tr>
- <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #1fb183;">
-        <th style="padding: 10px;">Guest House and Location</th>
-        <th style="padding: 10px;">In-charge / Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;">[Dariyapur] Naubatpur Divison</td>
-        <td style="padding: 10px;">Mr. Aashutosh Kumar</td>
-    </tr>
+<style>
+    .bah-container {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-    <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #1cbdc2;">
-        <th style="padding: 10px;">Guest House and Location</th>
-        <th style="padding: 10px;">In-charge / Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;">[ESIC BIHTA] Sikandrapur, Katesar, NH-30, Bihta ,Patna</td>
-        <td style="padding: 10px;">Mr. Rakesh Kumar</td>
-    </tr>
- 
-    <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #18b4cf;">
-        <th style="padding: 10px;">Guest House and  Location</th>
-        <th style="padding: 10px;">In-charge / Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;">[Guru ka Baag] Behind Satya Flor Mill , Deedarganj Patna , Patna city</td>
-        <td style="padding: 10px;">Mr.Suraj Kumar</td>
-    </tr> 
-    <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #9c4e4e;">
-        <th style="padding: 10px;">Guest House and  Location</th>
-        <th style="padding: 10px;">In-charge / Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;">[Dashrath Manjhi] Samanpura , BIT campus , Patna</td>
-        <td style="padding: 10px;">Mr.Mukesh Kumar</td>
-    </tr>
-    <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #15679a;">
-        <th style="padding: 10px;">Guest House and  Location</th>
-        <th style="padding: 10px;">In-charge / Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;">[Bapu Tower] khagaul Road Gardanibagh ,Patna</td>
-        <td style="padding: 10px;">Mr.Rohit Kumar</td>
-    </tr>
-    <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #2e7e74;">
-        <th style="padding: 10px;">Guest House and Location</th>
-        <th style="padding: 10px;">In-charge / Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;">[LNJP Hospital] Shastri Nagar Road ,Rajbasni Nagar Patna</td>
-        <td style="padding: 10px;">Mr. Rajeev Kumar</td>
-    </tr>
-     <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #366680;">
-        <th style="padding: 10px;">Guest House and Location</th>
-        <th style="padding: 10px;">In-charge / Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;">[NHIB]</td>
-        <td style="padding: 10px;">Mr. Raman Kumar</td>
-    </tr>
-    <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #f2f2f2;">
-        <th style="padding: 10px;">Guest House Proprietor</th>
-        <th style="padding: 10px;"> Manager</th>
-    </tr>
-    <tr>
-        <td style="padding: 10px;">Rajbansi Nagar, Patna</td>
-        <td style="padding: 10px;">Amit Kumar</td>
-    </tr>
-   
+    .bah-main-title {
+        color: #003366;
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .bah-sub-title {
+        text-align: center;
+        color: #555;
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        border-bottom: 2px solid #f4a261;
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 10px;
+    }
+
+    .bah-section-header {
+        color: #003366;
+        font-size: 1.5rem;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .bah-section-header i {
+        margin-right: 15px;
+        color: #f4a261;
+    }
+
+    /* Professional Bullet Card Design */
+    .bah-service-item {
+        background: #fff;
+        border-left: 4px solid #003366;
+        margin-bottom: 15px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        border-radius: 0 8px 8px 0;
+        transition: transform 0.2s;
+    }
+
+    .bah-service-item:hover {
+        transform: translateX(5px);
+        background: #f9fbff;
+    }
+
+    .bah-service-item h3 {
+        margin: 0 0 8px 0;
+        color: #0056b3;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .bah-service-item h3 i {
+        font-size: 0.9rem;
+        margin-right: 10px;
+        color: #f4a261;
+    }
+
+    .bah-service-item p {
+        margin: 0;
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .bah-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .bah-grid { grid-template-columns: 1fr; }
+        .bah-main-title { font-size: 1.8rem; }
+    }
+</style>
+
+<div class="bah-container">
+    <h1 class="bah-main-title">Beyond Authentic Hospitality</h1>
+    <span class="bah-sub-title">Integrated Facility & Hospitality Management Solutions</span>
+
+    <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 40px;">
+        A specialized service provider dedicated to the operation, maintenance, and professional management of government infrastructure and hospitality facilities.
+    </p>
+
+    <div class="bah-section-header">
+        <i class="fas fa-concierge-bell"></i> Our Core Services
+    </div>
+
+    <div class="bah-grid">
+        <!-- Service 1 -->
+        <div class="bah-service-item">
+            <h3><i class="fas fa-check-circle"></i>Govt Guest House Operation & Maintenance</h3>
+            <p>Comprehensive Housekeeping & Maintenance Of Govt Guest Houses</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="bah-service-item">
+            <h3><i class="fas fa-utensils"></i> Institutional Catering</h3>
+            <p>High-standard hygienic food services for government canteens, restaurants, and official corporate events.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="bah-service-item">
+            <h3><i class="fas fa-tools"></i> Facility Maintenance</h3>
+            <p>Comprehensive electrical, civil, and plumbing solutions with skilled manpower for preventive maintenance.</p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="bah-service-item">
+            <h3><i class="fas fa-elevator"></i> Lift & HVAC Support</h3>
+            <p>Specialized AMC services for elevators and centralized AC systems ensuring safety and energy efficiency.</p>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="bah-service-item">
+            <h3><i class="fas fa-faucet"></i> Utility Management</h3>
+            <p>Expert operation of Water Treatment (WTP) and Sewage Treatment Plants (STP) as per environmental standards.</p>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="bah-service-item">
+            <h3><i class="fas fa-bolt"></i> Power Solutions</h3>
+            <p>Customized diesel generator rentals and reliable power backup management for large establishments.</p>
+        </div>
+    </div>
+    <!--service 7-->
+     <div class="bah-service-item">
+        <h3><i class="fas fa-bolt"></i>Catering Service</i></h3>
+        <p>catering services provide on-site food and beverage solutions for guests, combining residential comfort with restaurant-style hospitality. Ranging from breakfast buffets to full-service meals, these services focus on convenience, offering tailored menus for meetings, events, or daily stay requirements</p>
+     </div>
+     <!--service 7-->
+     <div class="bah-service-item">
+        <h3><i class="fas fa-bolt"></i> Manpower Solution</i></h3>
+        <p>Manpower solution services are external HR services that source, screen, and provide temporary, contract, or permanent staff to businesses. They enable firms to quickly fill vacancies, manage seasonal hiring, and handle payroll/compliance, reducing recruitment time and administrative burdens.</p>
+     </div>
+     <!--service 8-->
+     <div class="bah-service-item">
+        <h3><i class="fas fa-bolt"></i>Electrical HT & LT panel</i></h3>
+        <p>Electrical HT (High Tension) and LT (Low Tension) panel services provide essential maintenance, testing, and repair to ensure industrial/commercial power systems remain safe and operational. Services include thermal scanning, cleaning, tightening connections, relay testing, and oil testing to prevent failures. Expert technicians also handle installation, retrofitting, and energy audits, reducing downtime. </p>
+     </div>
+      <!--service 9-->
+      <div class="bah-service-item">
+       <h3><i class="fas fa-bolt"></i>Lift Management</i></h3>
+       <p>Lift management services ensure that elevators (lifts) operate safely, efficiently, and reliably in residential and commercial buildings. These services include regular maintenance, repairs, inspections, and safety compliance checks to prevent breakdowns and extend the equipment's lifespan</p>
+      </div>
+  <!--service 10-->
+  <div class="bah-service-item">
+    <h3><i class="fas fa-bolt"></i>DG Management</i></h3>
+    <p>Diesel Generator (DG) Management Service ensures the reliable, safe, and efficient operation of standby power systems. It involves proactive maintenance, monitoring, and repair to guarantee power continuity during outages. </p>
+  </div>
+  <!--service 11-->
+  <div class="bah-service-item">
+   <h3><i class="fas fa-bolt"></i>HVAC</i></h3>
+   <P> Heating, Ventilation, and Air Conditioning, referring to the systems that regulate indoor environmental comfort. They manage temperature (heating/cooling), humidity, and air purity using components like furnaces, heat pumps, filters, and ducts to ensure healthy, comfortable air</P>
+  </div>
+  
+    <div class="bah-section-header">
+        <i class="fas fa-award"></i> Why Choose Us
+    </div>
+    
+    <div style="background: #003366; color: #fff; padding: 25px; border-radius: 8px;">
+        <p style="margin-bottom: 0;">We deliver excellence through <strong>Government Project Expertise</strong>, <strong>Regulatory Compliance</strong>, and <strong>24/7 Operational Support</strong>. Our solutions are cost-effective, transparent, and focused on quality execution.</p>
+    </div>
+</div>
+ <table border="1" style="width:100%; border-collapse: collapse; text-align: left; font-family: Arial, sans-serif;"> 
+    <!-- Table Header (सिर्फ एक बार आएगा) -->
+    <thead>
+        <tr style="background-color: #333; color: white;">
+            <th style="padding: 12px;">Guest House and Location</th>
+            <th style="padding: 12px;">In-charge / Manager</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <!-- Row 1 -->
+        <tr style="background-color: #2e8c69; color: white;">
+            <td style="padding: 10px;">[Nirikshan Bhawan] Rajbansi Nagar, Patna</td>
+            <td style="padding: 10px;">Mr. Rajeev Kumar, Mr. Chunmun Kumar</td>
+        </tr>
+        
+        <!-- Row 2 -->
+        <tr style="background-color: #13a5c9; color: white;">
+            <td style="padding: 10px;">[Op Sah] Malsalami, Patna City Near patna Sahib Gurudwara</td>
+            <td style="padding: 10px;">Mr. Suraj Kumar</td>
+        </tr>
+
+        <!-- Row 3 --> 
+        <tr style="background-color: #1db47c; color: white;">
+            <td style="padding: 10px;">[Vidhan Sabha] Rajbasni Nagar Near R-Block,Saat Murti</td>
+            <td style="padding: 10px;">Dharamraj</td>
+        </tr>
+
+        <!-- Row 4 -->
+        <tr style="background-color: #1fb183; color: white;">
+            <td style="padding: 10px;">[ BITE Dariyapur] Sangrampur Block ,East Champaran</td>
+            <td style="padding: 10px;">Mr. Aashutosh Kumar</td>
+        </tr>
+
+        <!-- Row 5 -->
+        <tr style="background-color: #1cbdc2; color: white;">
+            <td style="padding: 10px;">[ESIC BIHTA] Sikandrapur, Katesar, NH-30, Bihta ,Patna</td>
+            <td style="padding: 10px;">Mr. Rakesh Kumar</td>
+        </tr>
+        
+        <!-- Row 6 -->
+        <tr style="background-color: #18b4cf; color: white;">
+            <td style="padding: 10px;">[Patna Sahib Bhawan] Behind Satya Flor Mill , Deedarganj Patna</td>
+            <td style="padding: 10px;">Mr.Rohan Yadav</td>
+        </tr>
+
+        <!-- Row 7 -->
+        <tr style="background-color: #9c4e4e; color: white;">
+            <td style="padding: 10px;">[Dashrath Manjhi] Samanpura , BIT campus , Patna</td>
+            <td style="padding: 10px;">Mr.Mukesh Kumar</td>
+        </tr>
+
+        <!-- Row 8 -->
+        <tr style="background-color: #15679a; color: white;">
+            <td style="padding: 10px;">[Bapu Tower] khagaul Road Gardanibagh ,Patna</td>
+            <td style="padding: 10px;">Mr.Rohit Kumar</td>
+        </tr>
+        <!-- Row 9 -->
+        <tr style="background-color: #15679a; color: white;">
+            <td style="padding: 10px;">[NHIB] Near Patna Airport Entry Gate</td>
+            <td style="padding: 10px;">Mr.RamanKumar</td>
+        </tr>
+        <!-- Row 10 -->
+        <tr style="background-color: #15679a; color: white;">
+            <td style="padding: 10px;">[LNJP Hospital] Shastri Nagar Patna</td>
+            <td style="padding: 10px;">Mr.Rajeev Kumar</td>
+        </tr>
+    </tbody>
+</table>
+   <!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manager List</title>
+<style>
+    /* 10 मैनेजर्स के लिए ग्रिड लेआउट */
+    .manager-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        justify-items: center;
+    }
+
+    /* हर मैनेजर के बॉक्स का स्टाइल */
+    .manager-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        background-color: #f9f9f9;
+        width: 100%;
+        max-width: 250px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* इमेज का स्टाइल */
+    .manager-card img {
+        width: 100%;
+        height: 200px; /* सब फोटो एक बराबर ऊंचाई में दिखेंगी */
+        object-fit: cover; /* फोटो कटेगी नहीं, फिट हो जाएगी */
+        /* फोटो को गोल करने के लिए */
+        margin-bottom: 10px;
+    }
+
+    /* नाम का स्टाइल */
+    .manager-card h3 {
+        margin: 10px 0 5px;
+        font-size: 18px;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+
+<div class="manager-grid">
+
+    <!-- Manager 1 -->
+    <div class="manager-card">
+        <img src="Dept.webp" alt="Manager 1">
+        <h3>Nirikshan Bhawan</h3>
+    </div>
+
+    <!-- Manager 2 -->
+    <div class="manager-card">
+        <img src="opsah.jpg" alt="Manager 2">
+        <h3>Op Sah</h3>
+    </div>
+
+    <!-- Manager 3 -->
+    <div class="manager-card">
+        <img src="Vidhansabha.jpeg" alt="Manager 3">
+        <h3>Vidhan Sabha</h3>
+    </div>
+
+    <!-- Manager 4 -->
+    <div class="manager-card">
+        <img src="BiteDariyapur.webp" alt="Manager 4">
+        <h3>BITE Dariyapur</h3>
+    </div>
+
+    <!-- Manager 5 -->
+    <div class="manager-card">
+        <img src="ESICBihta.webp" alt="Manager 5">
+        <h3>ESIC Bihta</h3>
+    </div>
+
+    <!-- Manager 6 -->
+    <div class="manager-card">
+        <img src="Gurubaag.jpg" alt="Manager 6">
+        <h3>Patna Sahib Bhawan</h3>
+    </div>
+
+    <!-- Manager 7 -->
+    <div class="manager-card">
+        <img src="DashrathManjhi.jpg" alt="Manager 7">
+        <h3>DashrathManjhi</h3>
+    </div>
+
+    <!-- Manager 8 -->
+    <div class="manager-card">
+        <img src="BapuTower.jpg" alt="Manager 8">
+        <h3>Bapu Tower</h3>
+    </div>
+
+    <!-- Manager 9 -->
+    <div class="manager-card">
+        <img src="Nhib.webp" alt="Manager 9">
+        <h3>NHIB</h3>
+    </div>
+
+    <!-- Manager 10 -->
+    <div class="manager-card">
+        <img src="LNJP.png" alt="Manager 10">
+        <h3>LNJP</h3>
+    </div>
+
+</div>
+
+</body>
+</html> 
 <nav>
     <a href="#about">About</a>
     <a href="#services">Services</a>
@@ -228,19 +632,9 @@ footer {
 <section id="about">
     <h2>About Us</h2>
     <p>
-      Welcome to Beyond Authentic Hospital Company, where we redefine hospitality through a blend of comfort, hygiene, and authentic flavors. We take pride in providing comprehensive solutions for your needs, specializing in:<br>
-      Guest House Management: Offering a cozy and secure "home away from home" experience with personalized service.<br>
-      Housekeeping Services: Ensuring impeccable cleanliness and hygiene standards for a safe and welcoming environment.<br>
-      Catering Services: Delivering delicious, authentic, and high-quality food, tailored for every occasion and taste.<br>
-      Our commitment to quality, authenticity, and customer satisfaction sets us apart, making us your trusted partner for premium hospitality services.<br>
-
-   Beyond Authentic Hospitality is located in Rajbansi Nagar, Patna.
-        We provide guest house services with 10 Place guest house along with professional
-        housekeeping, catering, and facility management solutions.
+      "At Beyond Authentic Hospitality, we are dedicated to providing more than just a stay—we provide an experience. Our commitment to authentic service ensures that every guest feels welcomed and cared for, combining modern comfort with genuine local warmth. Whether you are here for leisure or business, we invite you to relax and create lasting memories with us."
     </p>
-
-
-    <h3 style="color: rosybrown; text-decoration: underline;">𝓞𝓾𝓻 𝓜𝓲𝓼𝓼𝓲𝓸𝓷</h3>
+<h3 style="color: rosybrown; text-decoration: underline;">𝓞𝓾𝓻 𝓜𝓲𝓼𝓼𝓲𝓸𝓷</h3>
     <p>
         To deliver high-quality hospitality and facility services with
         cleanliness, safety, and customer satisfaction as our top priority.
@@ -320,7 +714,6 @@ footer {
       border-radius: 10px;
       margin-bottom: 15px;
     }
-
     .card h3 {
       margin-bottom: 10px;
       font-size: 20px;
@@ -342,7 +735,7 @@ footer {
 
 <body>
 
-  <h2>Our Services</h2>
+  
 
   <div class="services">
 
@@ -370,9 +763,73 @@ footer {
       <img src="image.jpg" alt="">
       <h3>Garden & Lawn Maintenance</h3>
       <p>Regular care, trimming, and beautification of outdoor spaces.</p>
+
     </div>
- 
+ <section class="services">
+  <h2>Our Services</h2>
+
+  <div class="service-box">
+    <!-- STP -->
+    <div class="card">
+      <img src="stp.jpg" alt="STP">
+      <h4>STP</h4>
+      <p>Sewage water treatment for reuse & safe disposal.</p>
+    </div>
+
+    <!-- WTP -->
+    <div class="card">
+      <img src="Wtp.jpg" alt="WTP">
+      <h4>WTP</h4>
+      <p>Clean & safe water treatment solutions.</p>
+    </div>
   </div>
+</section>
+
+<style>
+.services {
+  padding: 20px;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.service-box {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.card {
+  width: 200px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 10px;
+}
+
+.card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card h4 {
+  margin: 8px 0 5px;
+  font-size: 16px;
+}
+
+.card p {
+  font-size: 12px;
+  color: #555;
+}
+</style>
+  </div>
+
+
 
 </body>
 </html>
@@ -415,13 +872,126 @@ footer {
 <span class="iso-badge">ISO CERTIFIED QUALITY AND FOOD SAFETY MANAGEMENT SYSTEM</span>
 <!-- CONTACT -->
 <section id="contact">
+      <!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Heads</title>
+<style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; }
+    .team-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 20px;
+    }
+    .team-member {
+        background: #007bff;
+        color: white;
+        padding: 15px 30px;
+        position: relative;
+        font-weight: bold;
+        border-radius: 5px;
+        min-width: 150px;
+        text-align: center;
+    }
+    /* तीर का डिज़ाइन (Arrow Design) */
+    .team-member:not(:last-child)::after {
+        content: "▶";
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #007bff;
+        font-size: 20px;
+    }
+    .team-member:hover { background-color: #0056b3; }
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Housekeeping & Catering Team Heads</h2>
+
+<div class="team-container">
+    <ol>
+        <h2><li>𝓒𝓱𝓾𝓷𝓶𝓾𝓷 𝓴𝓾𝓶𝓪𝓻</li></h2>
+        <h2><li>𝓐𝓶𝓲𝓽 𝓚𝓾𝓶𝓪𝓻</li></h2>
+       <h2><li>𝓡𝓪𝓳𝓮𝓮𝓿 𝓚𝓾𝓶𝓪𝓻</li></h2>
+       <h2><li>𝓜𝓾𝓴𝓮𝓼𝓱 𝓴𝓾𝓶𝓪𝓻</li></h2>
+    </ol>
+     <img src="chunmunpic.jpeg"width="150" height="200">
+     <img src="Amitsir.jpeg"width="200"height="200">
+     <img src="Rajeevsir.jpeg"width="200"height="200">
+    <img src="Mukeshsir.jpeg"height="200"width="200">
     <h2>Contact Us</h2>
     <p>📍 Nirikshan Bhawan Rajbansi Nagar, Patna</p> 
-    <img src="Dept.webp">
     <p>👤 Amit Kumar (Proprietor)</p>
+    <p>📞 +91-7050906666</p>
     <p>Rajeev Kumar </p>
     <p>📞+91-9828780848</p>
+    <footer class="footer">
+    <p >Thank You, Visit Again! <span style="font-size: 24px;">😊👶</span></p>
+</footer>
+<footer>
+    <p>&copy; 2026 Beyond Authentic Hospitality. All rights reserved.</p>
+</footer>
+</body>
+</html>
+ 
+    <img src="Dept.webp">
+    <p>👤 Amit Kumar (Proprietor)</p>
     <p>📞 +91-7050906666</p>
+    <p>Rajeev Kumar </p>
+    <p>📞+91-9828780848</p>
+    <a href="https://share.google/oiP8k4nayRhXs1fkb " >Nirikshan Bhawan</a>
+</div>
+<footer class="footer">
+    <p >Thank You, Visit Again! <span style="font-size: 24px;">😊👶</span></p>
+</footer>
+<footer>
+    <p>&copy; 2026 Beyond Authentic Hospitality. All rights reserved.</p>
+</footer>
+</body>
+</html>
+ 
+</section>
+
+
+
+
+<script>
+function bookNow() {
+    alert("Call us to confirm your booking!");
+}
+</script>
+</body>
+</html>
+
+
+
+    <h2>Contact Us</h2>
+    <p>📍 Nirikshan Bhawan Rajbansi Nagar, Patna</p> 
+    <p>👤 Amit Kumar (Proprietor)</p>
+    <p>📞 +91-7050906666</p>
+    <p>Rajeev Kumar </p>
+    <p>📞+91-9828780848</p>
+    <footer class="footer">
+        <footer>
+    <p >Thank You, Visit Again! <span style="font-size: 24px;">😊👶</span></p>
+</footer>
+<footer>
+    <p>&copy; 2026 Beyond Authentic Hospitality. All rights reserved.</p>
+</footer>
+</body>
+</html>
+ 
+    <img src="Dept.webp">
+    <p>👤 Amit Kumar (Proprietor)</p>
+    <p>📞 +91-7050906666</p>
+    <p>Rajeev Kumar </p>
+    <p>📞+91-9828780848</p>
     <a href="https://share.google/oiP8k4nayRhXs1fkb " >Nirikshan Bhawan</a>
     <h1>Our Team Head</h1>
     <!DOCTYPE html>
@@ -478,15 +1048,17 @@ footer {
      <img src="Rajeevsir.jpeg"width="200"height="200">
     <img src="Mukeshsir.jpeg"height="200"width="200">
 </div>
+<div>
 <footer class="footer">
     <p >Thank You, Visit Again! <span style="font-size: 24px;">😊👶</span></p>
 </footer>
+</div>
 <footer>
     <p>&copy; 2026 Beyond Authentic Hospitality. All rights reserved.</p>
 </footer>
 </body>
 </html>
-
+ 
 </section>
 
 <footer>
