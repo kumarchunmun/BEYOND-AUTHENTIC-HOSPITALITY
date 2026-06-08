@@ -1,61 +1,689 @@
-.scrolling-container {
-    width: 100%;
-    overflow: hidden; /* Bahar ka text chhupane ke liye */
-    white-space: nowrap;
-    background: #f8f9fa; /* Background color */
-    padding: 10px 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Authentic Hospitality</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f4f6f9; padding: 20px; color: #333; }
+        
+        .container { max-width: 1400px; margin: auto; }
+        
+        .header { 
+            background: #111111; 
+            padding: 25px 30px; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            text-align: center; 
+        }
+        
+        .header-text h1 { 
+            font-size: 28px; 
+            font-weight: 600; 
+            letter-spacing: 0.5px; 
+            color: #fff;
+            animation: whiteFlash 2s infinite ease-in-out;
+        }
 
-.scrolling-text {
-    display: inline-block;
-    font-size: 24px;
-    font-weight: bold;
-    color: #12bc70; /* Pinkish color jaisa image mein hai */
-    animation: scroll-left 20s linear infinite;
-}
+        @keyframes whiteFlash {
+            0% { opacity: 0.3; text-shadow: 0 0 0px rgba(255, 255, 255, 0); }
+            50% { opacity: 1; text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+            100% { opacity: 0.3; text-shadow: 0 0 0px rgba(255, 255, 255, 0); }
+        }
+        
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .card { background: #fff; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #111111; }
+        .card h3 { font-size: 14px; color: #666; text-transform: uppercase; margin-bottom: 5px; }
+        .card h2 { font-size: 26px; color: #111111; font-weight: bold; }
+        
+        .form-box { background: #fff; padding: 25px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .form-box h3 { margin-bottom: 15px; color: #111111; border-bottom: 2px solid #f4f6f9; padding-bottom: 8px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+        input, select { padding: 11px; border: 1px solid #ccc; border-radius: 5px; width: 100%; font-size: 14px; background-color: #fafafa; }
+        input:focus, select:focus { border-color: #111111; outline: none; background-color: #fff; }
+        
+        button { padding: 10px 15px; cursor: pointer; background: #111111; color: white; border: none; border-radius: 5px; font-weight: bold; transition: background 0.2s; }
+        button:hover { background: #292929; }
+        .btn-block { grid-column: 1 / -1; margin-top: 15px; font-size: 16px; padding: 12px; }
+        
+        .table-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .table-container { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+        th, td { border: 1px solid #eef2f5; padding: 12px 10px; text-align: center; }
+        th { background: #111111; color: white; font-weight: 600; }
+        tr:nth-child(even) { background-color: #f9fbfd; }
 
-@keyframes scroll-left {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
-}
+        .badge-room { background: #e3f2fd; color: #0d47a1; padding: 4px 8px; border-radius: 4px; font-weight: bold; border: 1px solid #bbdefb; }
+        .badge-month { background: #f3e5f5; color: #4a148c; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
+        .badge-amt { color: #1b5e20; font-weight: bold; }
+        .status-checkedout { background: #e8f5e9; color: #2e7d32; padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .status-live { background: #fff3e0; color: #ef6c00; padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: bold; }
 
+        /* Modal Settings */
+        .modal-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center; }
+        .modal-content { background: #fff; padding: 25px; border-radius: 8px; width: 95%; max-width: 950px; max-height: 90vh; overflow-y: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f4f6f9; padding-bottom: 10px; margin-bottom: 15px; color:#111111; }
+        
+        .section-header-row { display: flex; justify-content: space-between; align-items: center; background: #2c3e50; color: white; padding: 8px 12px; margin: 15px 0 8px 0; font-weight: bold; border-radius: 4px; font-size: 14px; }
+        .bg-breakfast { background: #e67e22; }
+        .bg-lunch { background: #27ae60; }
+        .bg-dinner { background: #2980b9; }
+        
+        .food-grid-row { display: grid; grid-template-columns: 1.5fr 3fr 1fr 1fr 1fr 40px; gap: 8px; align-items: center; margin-bottom: 6px; }
+        .add-row-btn { background: #fff; color: #333; font-size: 12px; padding: 4px 8px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; }
+        .del-row-btn { background: #d32f2f; color: white; padding: 8px; border-radius: 4px; font-weight: bold; text-align: center; border: none; cursor: pointer; }
 
-.iso-badge {
-    display: inline-block;
-    font-size: 28px;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
-    padding: 10px 18px;
-    border-radius: 8px;
-    text-transform: uppercase;
+        /* PRINT BILL BOXED SYSTEM */
+        #printAreaWrapper { display: none; }
+        .tallyInvoiceBlock { background: #fff; max-width: 850px; margin: 20px auto; color: #000; font-family: 'Bookman Old Style', Arial, sans-serif; border: 2px solid #000; padding: 0; page-break-after: always; }
+        .tallyInvoiceBlock:last-child { page-break-after: avoid; }
+        .tally-title-block { text-align: center; padding: 10px; border-bottom: 2px solid #000; }
+        .tally-title-block h2 { font-size: 26px; font-weight: bold; letter-spacing: 1px; }
+        
+        .label-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #000; }
+        .label-cell { padding: 6px 10px; border-right: 1px solid #000; font-size: 13px; border-bottom: 1px solid #000; line-height: 1.4; }
+        .label-cell:nth-child(2n) { border-right: none; }
+        .label-cell-full { grid-column: 1 / -1; padding: 6px 10px; font-size: 13px; border-bottom: 1px solid #000; line-height: 1.4; }
+        .lbl { font-weight: bold; min-width: 140px; display: inline-block; }
+        
+        .tally-table { width: 100%; border-collapse: collapse; }
+        .tally-table th { background: transparent; color: #000; border-bottom: 2px solid #000; border-right: 1px solid #000; padding: 6px; font-size: 13px; font-weight: bold; text-align: center; }
+        .tally-table th:last-child { border-right: none; }
+        .tally-table td { border-right: 1px solid #000; padding: 6px 8px; font-size: 13px; vertical-align: top; border-bottom: 1px dashed #ccc; }
+        .tally-table td:last-child { border-right: none; }
+        
+        .tally-category-header td { background: #f2f2f2; font-weight: bold; text-align: left; padding-left: 10px; font-size: 13px; border-bottom: 1px solid #000; border-top: 1px solid #000; }
+        
+        .tally-total-row { border-top: 2px solid #000; border-bottom: 2px solid #000; font-weight: bold; }
+        .tally-total-row td { padding: 8px; font-size: 14px; text-align: right; }
+        
+        .bank-details-box { padding: 10px; font-size: 13px; line-height: 1.5; border-bottom: 1px solid #000; }
+        .bank-row { margin-bottom: 3px; }
+        .tally-sign-box { display: grid; grid-template-columns: 1fr 1fr; height: 110px; align-items: end; text-align: center; font-size: 13px; padding-bottom: 10px; }
 
-    animation: isoColor 2s linear infinite, isoZoom 1.5s ease-in-out infinite;
+        @media print {
+            .no-print, .table-container, .form-box, .dashboard, .header, .modal-overlay { display: none !important; }
+            #printAreaWrapper { display: block !important; }
+            body { background: white; padding: 0; }
+        }
+    </style>
+</head>
+<body>
 
-    text-shadow:
-        1px 1px 0 #ff0000,
-        2px 2px 0 #00ff00,
-        3px 3px 0 #0000ff;
-}
+<div class="container">
+    <div class="no-print">
+        <header class="header">
+            <div class="header-text">
+                <h1>Beyond Authentic Hospitality</h1>
+                <h4>Housekeeping and catering Services</h4>
+            </div>
+        </header>
 
-@keyframes isoColor {
-    0%   { color: #ff0000; border: 2px solid #ff0000; box-shadow: 0 0 10px #ff0000; }
-    25%  { color: #00ff00; border: 2px solid #00ff00; box-shadow: 0 0 10px #00ff00; }
-    50%  { color: #0000ff; border: 2px solid #0000ff; box-shadow: 0 0 10px #0000ff; }
-    75%  { color: #ffff00; border: 2px solid #ffff00; box-shadow: 0 0 10px #ffff00; }
-    100% { color: #ff00ff; border: 2px solid #ff00ff; box-shadow: 0 0 10px #ff00ff; }
-}
+        <div class="dashboard">
+            <div class="card"><h3>Total Rooms</h3><h2>7</h2></div>
+            <div class="card"><h3>Live Occupied</h3><h2 id="occCount" style="color: #ef6c00;">0</h2></div>
+            <div class="card"><h3>Total Revenue Collection</h3><h2 id="totalColl" style="color: #2e7d32;">₹0</h2></div>
+            <div class="card"><h3>Vacant Rooms</h3><p id="vacantList" style="font-weight:bold; color:#2e7d32; margin-top:8px;"></p></div>
+        </div>
 
-@keyframes isoZoom {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-}
+        <div class="form-box" style="background: #fffdf5; border: 1px solid #ffeb3b;">
+            <h3>⚙️ Edit Company Profile, GST & Legal Credentials</h3>
+            <div class="grid" id="credentialForm">
+                <div><label style="font-size:11px; font-weight:bold;">Canteen Address</label><input type="text" id="cfgAddress" value="Nirikshan Bhawan Rajbansi Nagar Near Shastri Nagar Patna Bihar"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Proprietor Name</label><input type="text" id="cfgOwner" value="Amit Kumar"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Contact Mobile No</label><input type="text" id="cfgMobile" value="7050906666"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Email Address</label><input type="text" id="cfgEmail" value="beyondauthentichospitality@gmail.com"></div>
+                <div><label style="font-size:11px; font-weight:bold;">GSTIN No.</label><input type="text" id="cfgGst" value="1DDXGPK3374F1ZR"></div>
+                <div><label style="font-size:11px; font-weight:bold;">PAN Card Number</label><input type="text" id="cfgPan" value="DXGPK3374F"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Registration Number</label><input type="text" id="cfgReg" value="10048818052"></div>
+                <div><label style="font-size:11px; font-weight:bold;">SAC / Code</label><input type="text" id="cfgSac" value="996333"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Telephone No Canteen</label><input type="text" id="cfgTel" value="6122215180"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Bank Account Name</label><input type="text" id="cfgBankName" value="Beyond Authentic Hospitality"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Bank Account Number</label><input type="text" id="cfgBankAcc" value="37063147244"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Bank IFSC Code</label><input type="text" id="cfgBankIfsc" value="SBIN0018815"></div>
+            </div>
+        </div>
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-header{width: 100%;
-    margin: 0;
-    padding: 0%;
-}
+        <div class="form-box">
+            <h3>📋 Check-In Entry Form</h3>
+            <form id="bookingForm" class="grid">
+                <input type="text" id="pressNo" placeholder="Press / Voucher No" required>
+                <input type="text" id="guest" placeholder="Guest Name / Room Allocation" required>
+                <input type="text" id="dept" placeholder="Designation / Department">
+                <input type="text" id="ref" placeholder="Reference By">
+                <select id="room" required>
+                    <option value="">Select Room</option>
+                    <option value="F4">F4</option><option value="F5">F5</option>
+                    <option value="F6">F6</option><option value="F1">F1</option>
+                    <option value="F2">F2</option><option value="F3">F3</option>
+                    <option value="G1">G1</option>
+                </select>
+                <input type="date" id="cin" title="Check-In Date" required>
+                <input type="date" id="cout" title="Check-Out Date" required>
+                <input type="number" id="amt" placeholder="Room Rent Per Day (₹)" required>
+                <input type="text" id="remarks" placeholder="Remarks / Details">
+                <button type="submit" class="btn-block">💾 Save Check-In & Allocate Room</button>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header-flex">
+                <h3>🗂️ Live Occupancy & Stay Ledger</h3>
+                <button onclick="printAllInvoices()" style="background: #2e7d32; padding: 8px 16px; font-size: 14px;">🖨️ Bulk Print All Bills</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SL / Bill No (Press No)</th>
+                        <th>Month</th>
+                        <th>Guest Details</th>
+                        <th>Room</th>
+                        <th>Dates (In/Out)</th>
+                        <th>Room Rent</th>
+                        <th>Food Bill (Food Bill No)</th>
+                        <th>Total Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- MAIN FOOD MODAL -->
+    <div class="modal-overlay" id="foodModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🍽️ Dynamic Catering Register (Sectionized Open Entry)</h2>
+                <button type="button" onclick="closeFoodModal()" style="background:#e63946; color:white; padding: 6px 12px; border:none; cursor:pointer;">❌ Close</button>
+            </div>
+            <p style="margin-bottom: 10px; font-size:15px;">
+                Guest Name: <strong><span id="modalGuestName"></span></strong> | 
+                Stay Period: <span id="modalStayDates" style="color:#0288d1; font-weight:bold;"></span>
+            </p>
+            
+            <div style="background: #f1f8e9; padding: 12px; border-radius: 5px; margin-bottom: 15px; border: 1px solid #c5e1a5;">
+                <label style="font-weight: bold; font-size: 14px; color: #33691e;">🍔 Food Bill Number / Invoice Number:</label>
+                <input type="text" id="foodBillNoField" placeholder="Enter Unique Food Bill Number" style="max-width: 300px; margin-top: 5px; display: block; border: 1px solid #7cb342;">
+            </div>
+            
+            <form id="foodBillingForm">
+                <div class="section-header-row bg-breakfast">
+                    <div>🥞 1. BREAKFAST SECTION</div>
+                    <button type="button" class="add-row-btn" onclick="addFoodRow('breakfastContainer')">+ Add Breakfast Item</button>
+                </div>
+                <div id="breakfastContainer">
+                    <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                        <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+                    </div>
+                </div>
+
+                <div class="section-header-row bg-lunch">
+                    <div>🍱 2. LUNCH SECTION</div>
+                    <button type="button" class="add-row-btn" onclick="addFoodRow('lunchContainer')">+ Add Lunch Item</button>
+                </div>
+                <div id="lunchContainer">
+                    <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                        <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+                    </div>
+                </div>
+
+                <div class="section-header-row bg-dinner">
+                    <div>🍲 3. DINNER SECTION</div>
+                    <button type="button" class="add-row-btn" onclick="addFoodRow('dinnerContainer')">+ Add Dinner Item</button>
+                </div>
+                <div id="dinnerContainer">
+                    <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                        <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+                    </div>
+                </div>
+
+                <div style="margin-top:25px; padding:15px; background:#e8f5e9; border-radius:5px; text-align:right;">
+                    <span style="font-size:18px; font-weight:bold; color:#2e7d32;">Total Catering Bill: ₹<span id="modalGrandTotal">0</span></span>
+                </div>
+
+                <button type="button" onclick="submitFoodBill()" class="btn-block" style="background:#2e7d32;">🔒 Compile & Save Dynamic Food Data</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- WRAPPER FOR SINGLE AND BULK PRINTING SYSTEM -->
+    <div id="printAreaWrapper"></div>
+</div>
+
+<script>
+    const allRooms = ["F4", "F5", "F6", "F1", "F2", "F3", "G1"];
+    let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    let currentCheckoutIndex = null;
+
+    function getMonthName(dateString) {
+        if(!dateString) return "";
+        const date = new Date(dateString);
+        return date.toLocaleString('default', { month: 'long' });
+    }
+
+    function updateUI() {
+        const tbody = document.getElementById("tableBody");
+        tbody.innerHTML = "";
+        const todayStr = new Date().toISOString().split('T')[0];
+        let occupiedRooms = [];
+        let totalAmt = 0;
+
+        bookings.forEach(b => {
+            let roomCost = Number(b.amt) || 0;
+            let foodCost = Number(b.foodTotalCost) || 0;
+            totalAmt += (roomCost + foodCost);
+
+            if (todayStr >= b.cin && todayStr < b.cout && !b.checkedOut) {
+                if(!occupiedRooms.includes(b.room)) occupiedRooms.push(b.room);
+            }
+        });
+
+        let vacant = allRooms.filter(r => !occupiedRooms.includes(r));
+        document.getElementById("occCount").innerText = occupiedRooms.length;
+        document.getElementById("totalColl").innerText = "₹" + totalAmt;
+        document.getElementById("vacantList").innerText = vacant.length > 0 ? vacant.join(", ") : "Full";
+
+        bookings.forEach((b, i) => {
+            let foodBillTotal = Number(b.foodTotalCost) || 0;
+            let netBill = (Number(b.amt) || 0) + foodBillTotal;
+            
+            let statusBadge = b.checkedOut ? 
+                `<span class="status-checkedout">Checked Out</span>` : 
+                `<span class="status-live">Live / In-Room</span>`;
+
+            let actionButtons = `
+                <button onclick="openFoodModal(${i})" style="background:#0288d1; padding:5px 8px; font-size:12px;">🍽️ Food Menu</button>
+                <button onclick="printSingleInvoice(${i})" style="background:#5c6bc0; padding:5px 8px; font-size:12px;">🖨️ Print Bill</button> 
+                <button onclick="del(${i})" style="background:#e63946; padding:5px 8px; font-size:12px;">Delete</button>
+            `;
+
+            let displaySlAndPress = `<strong>SL-${b.sl || (i+1)}</strong> <span style="font-size:11px; display:block; color:#555;">(Press: ${b.pressNo || '-'})</span>`;
+            let displayFoodBill = `₹${foodBillTotal} <span style="font-size:11px; display:block; color:green; font-weight:normal;">(Bill: ${b.foodBillNo || 'N/A'})</span>`;
+
+            tbody.innerHTML += `<tr>
+                <td>${displaySlAndPress}</td>
+                <td><span class="badge-month">${b.month}</span></td>
+                <td style="text-align:left;">
+                    <div style="font-weight:bold; color:#0f3460;">${b.guest}</div>
+                    <div style="font-size:11px; color:#666;">Dept: ${b.dept || '-'}</div>
+                </td>
+                <td><span class="badge-room">${b.room}</span></td>
+                <td style="font-size:12px; text-align:left; white-space:nowrap;">
+                    <span style="color:green;">➡️ In: ${b.cin}</span><br>
+                    <span style="color:red;">⬅️ Out: ${b.cout}</span>
+                </td>
+                <td>₹${b.amt}</td>
+                <td style="color:#b87333; font-weight:bold;">${displayFoodBill}</td>
+                <td><span class="badge-amt">₹${netBill}</span></td>
+                <td>${statusBadge}</td>
+                <td class="no-print" style="white-space:nowrap;">${actionButtons}</td>
+            </tr>`;
+        });
+    }
+
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        let selectedRoom = document.getElementById("room").value;
+        let newCin = document.getElementById("cin").value;
+        let newCout = document.getElementById("cout").value;
+
+        let isAlreadyBooked = false;
+        let conflictingGuest = "";
+        let bookedRange = "";
+
+        for (let i = 0; i < bookings.length; i++) {
+            let b = bookings[i];
+            if (b.room === selectedRoom && !b.checkedOut) {
+                if (newCin < b.cout && newCout > b.cin) {
+                    isAlreadyBooked = true;
+                    conflictingGuest = b.guest;
+                    bookedRange = `${b.cin} to ${b.cout}`;
+                    break;
+                }
+            }
+        }
+
+        if (isAlreadyBooked) {
+            alert(`⚠️ Error: This Room and This Date is Already Booked!\n\nRoom ${selectedRoom} pehle se hi ${conflictingGuest} ke liye (${bookedRange}) tak booked hai.`);
+            return;
+        }
+
+        let generatedSl = bookings.length + 1;
+
+        let newBooking = {
+            sl: generatedSl.toString(), 
+            pressNo: document.getElementById("pressNo").value,
+            guest: document.getElementById("guest").value,
+            dept: document.getElementById("dept").value,
+            ref: document.getElementById("ref").value,
+            room: selectedRoom,
+            cin: newCin,
+            cout: newCout,
+            amt: document.getElementById("amt").value,
+            remarks: document.getElementById("remarks").value,
+            month: getMonthName(newCin),
+            checkedOut: false,
+            foodTotalCost: 0,
+            foodBillNo: "", 
+            breakfastItems: [],
+            lunchItems: [],
+            dinnerItems: []
+        };
+
+        bookings.push(newBooking);
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+        updateUI();
+        document.getElementById("bookingForm").reset();
+    });
+
+    function del(index) {
+        if(confirm("Are you sure you want to delete this record?")) {
+            bookings.splice(index, 1);
+            localStorage.setItem("bookings", JSON.stringify(bookings));
+            updateUI();
+        }
+    }
+
+    function addFoodRow(containerId, dateValue="", itemValue="", rateValue=0, qtyValue=0) {
+        const container = document.getElementById(containerId);
+        const uniqueId = "row_" + Date.now() + "_" + Math.floor(Math.random() * 100);
+        
+        let defaultDate = dateValue;
+        if(!defaultDate && currentCheckoutIndex !== null) {
+            defaultDate = bookings[currentCheckoutIndex].cin;
+        }
+
+        const rowDiv = document.createElement("div");
+        rowDiv.className = "food-grid-row";
+        rowDiv.id = uniqueId;
+        
+        rowDiv.innerHTML = `
+            <input type="date" class="f-date" value="${defaultDate}" required>
+            <input type="text" class="f-name" placeholder="Item Name Description" value="${itemValue}" required>
+            <input type="number" class="f-rate" placeholder="Rate" min="0" value="${rateValue || ''}" oninput="calcOpenTotals()" required>
+            <input type="number" class="f-qty" placeholder="Qty" min="1" value="${qtyValue || ''}" oninput="calcOpenTotals()" required>
+            <input type="text" class="f-amt" value="${rateValue * qtyValue || 0}" readonly style="background:#eee;">
+            <button type="button" class="del-row-btn" onclick="document.getElementById('${uniqueId}').remove(); calcOpenTotals();">X</button>
+        `;
+        container.appendChild(rowDiv);
+    }
+
+    function openFoodModal(index) {
+        currentCheckoutIndex = index;
+        let b = bookings[index];
+        document.getElementById("modalGuestName").innerText = b.guest;
+        document.getElementById("modalStayDates").innerText = b.cin + " to " + b.cout;
+        document.getElementById("foodBillNoField").value = b.foodBillNo || "";
+        
+        document.getElementById("breakfastContainer").innerHTML = `
+            <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+            </div>`;
+        document.getElementById("lunchContainer").innerHTML = `
+            <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+            </div>`;
+        document.getElementById("dinnerContainer").innerHTML = `
+            <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+            </div>`;
+        
+        if (b.breakfastItems && b.breakfastItems.length > 0) {
+            b.breakfastItems.forEach(it => addFoodRow('breakfastContainer', it.date, it.name, it.rate, it.qty));
+        } else {
+            addFoodRow('breakfastContainer', b.cin, 'Bread Toast / Omelette', 70, 2);
+            addFoodRow('breakfastContainer', b.cin, 'Tea / Coffee', 20, 4);
+        }
+        
+        if (b.lunchItems && b.lunchItems.length > 0) {
+            b.lunchItems.forEach(it => addFoodRow('lunchContainer', it.date, it.name, it.rate, it.qty));
+        } else {
+            addFoodRow('lunchContainer', b.cin, 'Rice Veg Thali', 120, 2);
+            addFoodRow('lunchContainer', b.cin, 'Mutton Curry Extra', 250, 1);
+        }
+        
+        if (b.dinnerItems && b.dinnerItems.length > 0) {
+            b.dinnerItems.forEach(it => addFoodRow('dinnerContainer', it.date, it.name, it.rate, it.qty));
+        } else {
+            addFoodRow('dinnerContainer', b.cin, 'Roti Tadka Special', 100, 2);
+            addFoodRow('dinnerContainer', b.cin, 'Chicken Dehati Plate', 220, 1);
+        }
+
+        calcOpenTotals();
+        document.getElementById("foodModal").style.display = "flex";
+    }
+
+    function closeFoodModal() {
+        document.getElementById("foodModal").style.display = "none";
+        currentCheckoutIndex = null;
+    }
+
+    function calcOpenTotals() {
+        let grandTotal = 0;
+        ['breakfastContainer', 'lunchContainer', 'dinnerContainer'].forEach(id => {
+            const rows = document.getElementById(id).querySelectorAll(".food-grid-row");
+            rows.forEach(row => {
+                const rateInp = row.querySelector(".f-rate");
+                const qtyInp = row.querySelector(".f-qty");
+                const amtInp = row.querySelector(".f-amt");
+                if(rateInp && qtyInp && amtInp) {
+                    let r = Number(rateInp.value) || 0;
+                    let q = Number(qtyInp.value) || 0;
+                    let total = r * q;
+                    amtInp.value = total;
+                    grandTotal += total;
+                }
+            });
+        });
+        document.getElementById("modalGrandTotal").innerText = grandTotal;
+    }
+
+    function getSectionItems(containerId) {
+        let array = [];
+        const rows = document.getElementById(containerId).querySelectorAll(".food-grid-row");
+        rows.forEach(row => {
+            const dateInp = row.querySelector(".f-date");
+            const nameInp = row.querySelector(".f-name");
+            const rateInp = row.querySelector(".f-rate");
+            const qtyInp = row.querySelector(".f-qty");
+            if(nameInp && rateInp && qtyInp && dateInp) {
+                let qty = Number(qtyInp.value) || 0;
+                let rate = Number(rateInp.value) || 0;
+                if(qty > 0 && nameInp.value.trim() !== "") {
+                    array.push({ 
+                        date: dateInp.value, 
+                        name: nameInp.value.trim(), 
+                        rate: rate, 
+                        qty: qty, 
+                        total: rate * qty 
+                    });
+                }
+            }
+        });
+        return array;
+    }
+
+    function submitFoodBill() {
+        if(currentCheckoutIndex === null) return;
+        
+        let foodBillInput = document.getElementById("foodBillNoField").value.trim();
+        if(!foodBillInput) {
+            alert("Please enter a Food Bill Number before compiling data!");
+            return;
+        }
+
+        let bf = getSectionItems('breakfastContainer');
+        let ln = getSectionItems('lunchContainer');
+        let dn = getSectionItems('dinnerContainer');
+
+        let total = 0;
+        bf.forEach(x => total += x.total);
+        ln.forEach(x => total += x.total);
+        dn.forEach(x => total += x.total);
+
+        bookings[currentCheckoutIndex].breakfastItems = bf;
+        bookings[currentCheckoutIndex].lunchItems = ln;
+        bookings[currentCheckoutIndex].dinnerItems = dn;
+        bookings[currentCheckoutIndex].foodTotalCost = total;
+        bookings[currentCheckoutIndex].foodBillNo = foodBillInput; 
+
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+        updateUI();
+        closeFoodModal();
+        alert("Food data compiled successfully!");
+    }
+
+    function getCfgValues() {
+        return {
+            address: document.getElementById("cfgAddress").value,
+            owner: document.getElementById("cfgOwner").value,
+            mobile: document.getElementById("cfgMobile").value,
+            email: document.getElementById("cfgEmail").value,
+            gst: document.getElementById("cfgGst").value,
+            pan: document.getElementById("cfgPan").value,
+            reg: document.getElementById("cfgReg").value,
+            sac: document.getElementById("cfgSac").value,
+            tel: document.getElementById("cfgTel").value,
+            bankName: document.getElementById("cfgBankName").value,
+            bankAcc: document.getElementById("cfgBankAcc").value,
+            bankIfsc: document.getElementById("cfgBankIfsc").value
+        };
+    }
+
+    // GENERATE HTML STRUCTURE FOR INVOICE BLOCK
+    function buildInvoiceHTML(b, index, cfg) {
+        let perDayRent = Number(b.amt) || 0;
+        let foodBillTotal = Number(b.foodTotalCost) || 0;
+        let dynamicGrandTotal = perDayRent + foodBillTotal;
+
+        let foodRowsHtml = "";
+        if(b.breakfastItems && b.breakfastItems.length > 0) {
+            foodRowsHtml += `<tr class="tally-category-header"><td colspan="5">🥞 Breakfast Menu Charges</td></tr>`;
+            b.breakfastItems.forEach(item => {
+                foodRowsHtml += `<tr><td>${item.date}</td><td style="text-align:left; padding-left:10px;">${item.name}</td><td>${item.qty}</td><td>₹${item.rate}</td><td style="text-align:right; padding-right:10px;">₹${item.total}</td></tr>`;
+            });
+        }
+        if(b.lunchItems && b.lunchItems.length > 0) {
+            foodRowsHtml += `<tr class="tally-category-header"><td colspan="5">🍱 Lunch Menu Charges</td></tr>`;
+            b.lunchItems.forEach(item => {
+                foodRowsHtml += `<tr><td>${item.date}</td><td style="text-align:left; padding-left:10px;">${item.name}</td><td>${item.qty}</td><td>₹${item.rate}</td><td style="text-align:right; padding-right:10px;">₹${item.total}</td></tr>`;
+            });
+        }
+        if(b.dinnerItems && b.dinnerItems.length > 0) {
+            foodRowsHtml += `<tr class="tally-category-header"><td colspan="5">🍲 Dinner Menu Charges</td></tr>`;
+            b.dinnerItems.forEach(item => {
+                foodRowsHtml += `<tr><td>${item.date}</td><td style="text-align:left; padding-left:10px;">${item.name}</td><td>${item.qty}</td><td>₹${item.rate}</td><td style="text-align:right; padding-right:10px;">₹${item.total}</td></tr>`;
+            });
+        }
+
+        return `
+        <div class="tallyInvoiceBlock">
+            <div class="tally-title-block"><h2>INVOICE / BILL</h2></div>
+            <div class="label-grid">
+                <div class="label-cell-full"><span class="lbl">Canteen Address:</span> <span>${cfg.address}</span></div>
+                <div class="label-cell"><span class="lbl">Proprietor Name:</span> <span>${cfg.owner}</span></div>
+                <div class="label-cell"><span class="lbl">Regd Office:</span> <span>Patna, Bihar</span></div>
+                <div class="label-cell"><span class="lbl">Email Id:</span> <span>${cfg.email}</span></div>
+                <div class="label-cell"><span class="lbl">Mobile No:</span> <span>${cfg.mobile}</span></div>
+                <div class="label-cell"><span class="lbl">GSTIN No:</span> <span>${cfg.gst}</span></div>
+                <div class="label-cell"><span class="lbl">PAN Card No:</span> <span>${cfg.pan}</span></div>
+                <div class="label-cell"><span class="lbl">Registration No:</span> <span>${cfg.reg}</span></div>
+                <div class="label-cell"><span class="lbl">SAC / Code:</span> <span>${cfg.sac}</span></div>
+                <div class="label-cell-full"><span class="lbl">Guest Name:</span> <strong>${b.guest}</strong></div>
+                <div class="label-cell"><span class="lbl">Room Allocated:</span> <span>Room ${b.room}</span></div>
+                <div class="label-cell"><span class="lbl">Voucher/Press No:</span> <span>${b.pressNo || '-'}</span></div>
+                <div class="label-cell"><span class="lbl">Check-In Date:</span> <span>${b.cin}</span></div>
+                <div class="label-cell"><span class="lbl">Check-Out Date:</span> <span>${b.cout}</span></div>
+                <div class="label-cell"><span class="lbl">Department/Dept:</span> <span>${b.dept || '-'}</span></div>
+                <div class="label-cell"><span class="lbl">Reference By:</span> <span>${b.ref || '-'}</span></div>
+                <div class="label-cell-full"><span class="lbl">Food Bill No:</span> <span>${b.foodBillNo || 'N/A'}</span></div>
+            </div>
+            
+            <table class="tally-table">
+                <thead>
+                    <tr>
+                        <th style="width:120px;">Date</th>
+                        <th>Service / Item Description</th>
+                        <th style="width:70px;">Qty</th>
+                        <th style="width:100px;">Rate</th>
+                        <th style="width:120px; text-align:right; padding-right:10px;">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${b.cin}</td>
+                        <td style="text-align:left; padding-left:10px;">Room Rent Stay Charges (Room: ${b.room})</td>
+                        <td>1</td>
+                        <td>₹${perDayRent}</td>
+                        <td style="text-align:right; padding-right:10px;">₹${perDayRent}</td>
+                    </tr>
+                    ${foodRowsHtml}
+                    <tr class="tally-total-row">
+                        <td colspan="4">GRAND TOTAL NET PAYABLE AMOUNT:</td>
+                        <td style="padding-right:10px;">₹${dynamicGrandTotal}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="bank-details-box">
+                <div class="bank-row"><strong>Bank Remittance Details:</strong></div>
+                <div class="bank-row"><span style="display:inline-block; width:130px;">Account Name:</span> ${cfg.bankName}</div>
+                <div class="bank-row"><span style="display:inline-block; width:130px;">Account Number:</span> ${cfg.bankAcc}</div>
+                <div class="bank-row"><span style="display:inline-block; width:130px;">Bank IFSC Code:</span> ${cfg.bankIfsc}</div>
+            </div>
+
+            <div class="tally-sign-box">
+                <div>Guest Signature</div>
+                <div>Authorized Signatory<br><small>For Beyond Authentic Hospitality</small></div>
+            </div>
+        </div>`;
+    }
+
+    function printSingleInvoice(index) {
+        let b = bookings[index];
+        let cfg = getCfgValues();
+        let wrapper = document.getElementById("printAreaWrapper");
+        
+        wrapper.innerHTML = buildInvoiceHTML(b, index, cfg);
+        
+        // Soft-save checked-out state 
+        bookings[index].checkedOut = true;
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+        updateUI();
+
+        window.print();
+    }
+
+    function printAllInvoices() {
+        if(bookings.length === 0) {
+            alert("No data records available to print!");
+            return;
+        }
+        let cfg = getCfgValues();
+        let wrapper = document.getElementById("printAreaWrapper");
+        let completeHtml = "";
+
+        bookings.forEach((b, index) => {
+            completeHtml += buildInvoiceHTML(b, index, cfg);
+            bookings[index].checkedOut = true;
+        });
+
+        wrapper.innerHTML = completeHtml;
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+        updateUI();
+
+        window.print();
+    }
+
+    // Initialize application layout
+    updateUI();
+</script>
+</body>
+</html>
