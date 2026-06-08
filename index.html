@@ -1,946 +1,689 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<header><nav>
-<!-- HEADER START -->
-<header class="main-header">
-
-    <!-- Logo + Company Name Together -->
-    <div class="brand">
-        <img src="logo.jpeg" alt="Logo">
-        <div class="text">
-            <h1>Beyond Authentic</h1>
-            <p>Hospitality</p>
-        </div>
-    </div>
-<!DOCTYPE html>
-<html lang="hi">
-<head>
     <meta charset="UTF-8">
-    <!-- Professional Font: Montserrat -->
-    <link href="https://googleapis.com" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Authentic Hospitality</title>
     <style>
-        body { margin: 0; padding: 0; background-color: #111; }
-
-        .header-container {
-            background-color: #000;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 2px solid #222;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f4f6f9; padding: 20px; color: #333; }
+        
+        .container { max-width: 1400px; margin: auto; }
+        
+        .header { 
+            background: #111111; 
+            padding: 25px 30px; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            text-align: center; 
+        }
+        
+        .header-text h1 { 
+            font-size: 28px; 
+            font-weight: 600; 
+            letter-spacing: 0.5px; 
+            color: #fff;
+            animation: whiteFlash 2s infinite ease-in-out;
         }
 
-        .brand-logo {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            text-decoration: none;
-            display: inline-block;
-            cursor: pointer;
+        @keyframes whiteFlash {
+            0% { opacity: 0.3; text-shadow: 0 0 0px rgba(255, 255, 255, 0); }
+            50% { opacity: 1; text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+            100% { opacity: 0.3; text-shadow: 0 0 0px rgba(255, 255, 255, 0); }
         }
+        
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .card { background: #fff; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #111111; }
+        .card h3 { font-size: 14px; color: #666; text-transform: uppercase; margin-bottom: 5px; }
+        .card h2 { font-size: 26px; color: #111111; font-weight: bold; }
+        
+        .form-box { background: #fff; padding: 25px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .form-box h3 { margin-bottom: 15px; color: #111111; border-bottom: 2px solid #f4f6f9; padding-bottom: 8px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+        input, select { padding: 11px; border: 1px solid #ccc; border-radius: 5px; width: 100%; font-size: 14px; background-color: #fafafa; }
+        input:focus, select:focus { border-color: #111111; outline: none; background-color: #fff; }
+        
+        button { padding: 10px 15px; cursor: pointer; background: #111111; color: white; border: none; border-radius: 5px; font-weight: bold; transition: background 0.2s; }
+        button:hover { background: #292929; }
+        .btn-block { grid-column: 1 / -1; margin-top: 15px; font-size: 16px; padding: 12px; }
+        
+        .table-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .table-container { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+        th, td { border: 1px solid #eef2f5; padding: 12px 10px; text-align: center; }
+        th { background: #111111; color: white; font-weight: 600; }
+        tr:nth-child(even) { background-color: #f9fbfd; }
 
-        /* --- PROFESSIONAL 3D DESIGN --- */
-        .brand-name {
-            color: #FFFFFF;
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin: 0;
-            
-            /* Clean Minimal 3D Shadow */
-            text-shadow: 
-                1px 1px 0px #888,
-                2px 2px 0px #555,
-                3px 3px 10px rgba(0,0,0,0.8);
+        .badge-room { background: #e3f2fd; color: #0d47a1; padding: 4px 8px; border-radius: 4px; font-weight: bold; border: 1px solid #bbdefb; }
+        .badge-month { background: #f3e5f5; color: #4a148c; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
+        .badge-amt { color: #1b5e20; font-weight: bold; }
+        .status-checkedout { background: #e8f5e9; color: #2e7d32; padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .status-live { background: #fff3e0; color: #ef6c00; padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: bold; }
 
-            /* Metallic Flash Animation */
-            animation: professionalFlash 3s infinite ease-in-out;
-        }
+        /* Modal Settings */
+        .modal-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center; }
+        .modal-content { background: #fff; padding: 25px; border-radius: 8px; width: 95%; max-width: 950px; max-height: 90vh; overflow-y: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f4f6f9; padding-bottom: 10px; margin-bottom: 15px; color:#111111; }
+        
+        .section-header-row { display: flex; justify-content: space-between; align-items: center; background: #2c3e50; color: white; padding: 8px 12px; margin: 15px 0 8px 0; font-weight: bold; border-radius: 4px; font-size: 14px; }
+        .bg-breakfast { background: #e67e22; }
+        .bg-lunch { background: #27ae60; }
+        .bg-dinner { background: #2980b9; }
+        
+        .food-grid-row { display: grid; grid-template-columns: 1.5fr 3fr 1fr 1fr 1fr 40px; gap: 8px; align-items: center; margin-bottom: 6px; }
+        .add-row-btn { background: #fff; color: #333; font-size: 12px; padding: 4px 8px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; }
+        .del-row-btn { background: #d32f2f; color: white; padding: 8px; border-radius: 4px; font-weight: bold; text-align: center; border: none; cursor: pointer; }
 
-        .brand-tagline {
-            color: #AAA; /* Muted silver color */
-            font-size: 11px;
-            font-weight: 400;
-            letter-spacing: 6px;
-            margin-top: 5px;
-            display: block;
-        }
+        /* PRINT BILL BOXED SYSTEM */
+        #printAreaWrapper { display: none; }
+        .tallyInvoiceBlock { background: #fff; max-width: 850px; margin: 20px auto; color: #000; font-family: 'Bookman Old Style', Arial, sans-serif; border: 2px solid #000; padding: 0; page-break-after: always; }
+        .tallyInvoiceBlock:last-child { page-break-after: avoid; }
+        .tally-title-block { text-align: center; padding: 10px; border-bottom: 2px solid #000; }
+        .tally-title-block h2 { font-size: 26px; font-weight: bold; letter-spacing: 1px; }
+        
+        .label-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #000; }
+        .label-cell { padding: 6px 10px; border-right: 1px solid #000; font-size: 13px; border-bottom: 1px solid #000; line-height: 1.4; }
+        .label-cell:nth-child(2n) { border-right: none; }
+        .label-cell-full { grid-column: 1 / -1; padding: 6px 10px; font-size: 13px; border-bottom: 1px solid #000; line-height: 1.4; }
+        .lbl { font-weight: bold; min-width: 140px; display: inline-block; }
+        
+        .tally-table { width: 100%; border-collapse: collapse; }
+        .tally-table th { background: transparent; color: #000; border-bottom: 2px solid #000; border-right: 1px solid #000; padding: 6px; font-size: 13px; font-weight: bold; text-align: center; }
+        .tally-table th:last-child { border-right: none; }
+        .tally-table td { border-right: 1px solid #000; padding: 6px 8px; font-size: 13px; vertical-align: top; border-bottom: 1px dashed #ccc; }
+        .tally-table td:last-child { border-right: none; }
+        
+        .tally-category-header td { background: #f2f2f2; font-weight: bold; text-align: left; padding-left: 10px; font-size: 13px; border-bottom: 1px solid #000; border-top: 1px solid #000; }
+        
+        .tally-total-row { border-top: 2px solid #000; border-bottom: 2px solid #000; font-weight: bold; }
+        .tally-total-row td { padding: 8px; font-size: 14px; text-align: right; }
+        
+        .bank-details-box { padding: 10px; font-size: 13px; line-height: 1.5; border-bottom: 1px solid #000; }
+        .bank-row { margin-bottom: 3px; }
+        .tally-sign-box { display: grid; grid-template-columns: 1fr 1fr; height: 110px; align-items: end; text-align: center; font-size: 13px; padding-bottom: 10px; }
 
-        /* --- PROFESSIONAL ANIMATION --- */
-        /* Isme brightness aur shadow dono change honge */
-        @keyframes professionalFlash {
-            0%, 100% { 
-                opacity: 1; 
-                filter: brightness(100%);
-                text-shadow: 1px 1px 0px #888, 2px 2px 0px #555, 3px 3px 10px rgba(0,0,0,0.8);
-            }
-            50% { 
-                opacity: 0.85; 
-                filter: brightness(140%);
-                text-shadow: 0px 0px 15px rgba(255,255,255,0.6); /* Soft Glow effect */
-            }
+        @media print {
+            .no-print, .table-container, .form-box, .dashboard, .header, .modal-overlay { display: none !important; }
+            #printAreaWrapper { display: block !important; }
+            body { background: white; padding: 0; }
         }
     </style>
 </head>
 <body>
 
-    <header class="header-container">
-        <div class="brand-logo">
-            <div class="brand-name">Beyond Authentic</div>
-            <span class="brand-tagline">HOSPITALITY</span>
-        </div>
-    </header>
+<div class="container">
+    <div class="no-print">
+        <header class="header">
+            <div class="header-text">
+                <h1>Beyond Authentic Hospitality</h1>
+                <h4>Housekeeping and catering Services</h4>
+            </div>
+        </header>
 
-</body>
-</html>
-</header>
-<!-- HEADER END -->
-
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* Header */
-.main-header {
-    background: black;
-    padding: 25px;
-    margin: 10px;
-}
-
-/* Brand (logo + text in one line) */
-.brand {
-    display: flex;
-    align-items: center;
-}
-
-/* Logo */
-.brand img {
-    width: 100px;
-    height: 50px;
-    margin-right: 10px;
-}
-
-/* Text */
-.text h1 {
-    color: white;
-    margin: 0;
-    font-size: 20px;
-    letter-spacing: 1px;
-}
-
-.text p {
-    color: #bbb;
-    margin: 0;
-    font-size: 12px;
-    letter-spacing: 2px;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    .brand img {
-        width: 45px;
-    }
-    .text h1 {
-        font-size: 16px;
-    }
-}
-</style>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-</nav></header>
-<title>Beyond Authentic Hospitality</title>
-<link rel="stylesheet"href="style.css">
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #f4f6f7;
-}
-
-
-/* Hero Section */
-.hero {
-    height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.hero h1 {
-    font-size: 50px;
-} 
-
-.hero p {
-    font-size: 20px;
-}
-
-/* Navbar */
-nav {
-    background: #2c3e50;
-    padding: 10px;
-    text-align: center;
-}
-
-nav a {
-    color: white;
-    margin: 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Sections */
-section {
-    padding: 40px;
-    text-align: center;
-}
-
-h2 {
-    color: #2c3e50;
-}
-
-/* Cards */
-.container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.card {
-    background: white;
-    padding: 20px;
-    width: 260px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* Button */
-.btn {
-    background: #27ae60;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Footer */
-footer {
-    background: #2c3e50;
-    color: white;
-    padding: 15px;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="hero">
-    <h1>Beyond Authentic Hospitality</h1>
-    <p>Guest House | Housekeeping | Catering | Facility Management | Manpower Solution |</p>
-    
-</div>
-<section id="rooms">
-
-    <div class="scrolling-container">
-    <div class="scrolling-text">"Welcome to Beyond Authentic Hospitality we Provide Superior facilities for your Comfort."</div>
-</div>
-    
-    <p>
-        <!-- Add this Font Awesome link in your <head> if you don't have it -->
-<link rel="stylesheet" href="https://cloudflare.com">
-
-<style>
-    .bah-container {
-        font-family: 'Segoe UI', Arial, sans-serif;
-        color: #333;
-        line-height: 1.6;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .bah-main-title {
-        color: #003366;
-        text-align: center;
-        font-size: 2.2rem;
-        margin-bottom: 10px;
-        font-weight: 700;
-    }
-
-    .bah-sub-title {
-        text-align: center;
-        color: #555;
-        font-size: 1.2rem;
-        margin-bottom: 40px;
-        border-bottom: 2px solid #f4a261;
-        display: block;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-        padding-bottom: 10px;
-    }
-
-    .bah-section-header {
-        color: #003366;
-        font-size: 1.5rem;
-        margin-top: 30px;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-    }
-
-    .bah-section-header i {
-        margin-right: 15px;
-        color: #f4a261;
-    }
-
-    /* Professional Bullet Card Design */
-    .bah-service-item {
-        background: #fff;
-        border-left: 4px solid #003366;
-        margin-bottom: 15px;
-        padding: 20px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        border-radius: 0 8px 8px 0;
-        transition: transform 0.2s;
-    }
-
-    .bah-service-item:hover {
-        transform: translateX(5px);
-        background: #f9fbff;
-    }
-
-    .bah-service-item h3 {
-        margin: 0 0 8px 0;
-        color: #0056b3;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-    }
-
-    .bah-service-item h3 i {
-        font-size: 0.9rem;
-        margin-right: 10px;
-        color: #f4a261;
-    }
-
-    .bah-service-item p {
-        margin: 0;
-        font-size: 1rem;
-        color: #555;
-    }
-
-    .bah-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    @media (max-width: 768px) {
-        .bah-grid { grid-template-columns: 1fr; }
-        .bah-main-title { font-size: 1.8rem; }
-    }
-</style>
-
-<div class="bah-container">
-    <h1 class="bah-main-title">Beyond Authentic Hospitality</h1>
-    <span class="bah-sub-title">Integrated Facility & Hospitality Management Solutions</span>
-
-    <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 40px;">
-        A specialized service provider dedicated to the operation, maintenance, and professional management of government infrastructure and hospitality facilities.
-    </p>
-
-    <div class="bah-section-header">
-        <i class="fas fa-concierge-bell"></i> Our Core Services
-    </div>
-
-    <div class="bah-grid">
-        <!-- Service 1 -->
-        <div class="bah-service-item">
-            <h3><i class="fas fa-check-circle"></i>Govt Guest House Operation & Maintenance</h3>
-            <p>Comprehensive Housekeeping & Maintenance Of Govt Guest Houses</p>
+        <div class="dashboard">
+            <div class="card"><h3>Total Rooms</h3><h2>7</h2></div>
+            <div class="card"><h3>Live Occupied</h3><h2 id="occCount" style="color: #ef6c00;">0</h2></div>
+            <div class="card"><h3>Total Revenue Collection</h3><h2 id="totalColl" style="color: #2e7d32;">₹0</h2></div>
+            <div class="card"><h3>Vacant Rooms</h3><p id="vacantList" style="font-weight:bold; color:#2e7d32; margin-top:8px;"></p></div>
         </div>
 
-        <!-- Service 2 -->
-        <div class="bah-service-item">
-            <h3><i class="fas fa-utensils"></i> Institutional Catering</h3>
-            <p>High-standard hygienic food services for government canteens, restaurants, and official corporate events.</p>
+        <div class="form-box" style="background: #fffdf5; border: 1px solid #ffeb3b;">
+            <h3>⚙️ Edit Company Profile, GST & Legal Credentials</h3>
+            <div class="grid" id="credentialForm">
+                <div><label style="font-size:11px; font-weight:bold;">Canteen Address</label><input type="text" id="cfgAddress" value="Nirikshan Bhawan Rajbansi Nagar Near Shastri Nagar Patna Bihar"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Proprietor Name</label><input type="text" id="cfgOwner" value="Amit Kumar"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Contact Mobile No</label><input type="text" id="cfgMobile" value="7050906666"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Email Address</label><input type="text" id="cfgEmail" value="beyondauthentichospitality@gmail.com"></div>
+                <div><label style="font-size:11px; font-weight:bold;">GSTIN No.</label><input type="text" id="cfgGst" value="1DDXGPK3374F1ZR"></div>
+                <div><label style="font-size:11px; font-weight:bold;">PAN Card Number</label><input type="text" id="cfgPan" value="DXGPK3374F"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Registration Number</label><input type="text" id="cfgReg" value="10048818052"></div>
+                <div><label style="font-size:11px; font-weight:bold;">SAC / Code</label><input type="text" id="cfgSac" value="996333"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Telephone No Canteen</label><input type="text" id="cfgTel" value="6122215180"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Bank Account Name</label><input type="text" id="cfgBankName" value="Beyond Authentic Hospitality"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Bank Account Number</label><input type="text" id="cfgBankAcc" value="37063147244"></div>
+                <div><label style="font-size:11px; font-weight:bold;">Bank IFSC Code</label><input type="text" id="cfgBankIfsc" value="SBIN0018815"></div>
+            </div>
         </div>
 
-        <!-- Service 3 -->
-        <div class="bah-service-item">
-            <h3><i class="fas fa-tools"></i> Facility Maintenance</h3>
-            <p>Comprehensive electrical, civil, and plumbing solutions with skilled manpower for preventive maintenance.</p>
+        <div class="form-box">
+            <h3>📋 Check-In Entry Form</h3>
+            <form id="bookingForm" class="grid">
+                <input type="text" id="pressNo" placeholder="Press / Voucher No" required>
+                <input type="text" id="guest" placeholder="Guest Name / Room Allocation" required>
+                <input type="text" id="dept" placeholder="Designation / Department">
+                <input type="text" id="ref" placeholder="Reference By">
+                <select id="room" required>
+                    <option value="">Select Room</option>
+                    <option value="F4">F4</option><option value="F5">F5</option>
+                    <option value="F6">F6</option><option value="F1">F1</option>
+                    <option value="F2">F2</option><option value="F3">F3</option>
+                    <option value="G1">G1</option>
+                </select>
+                <input type="date" id="cin" title="Check-In Date" required>
+                <input type="date" id="cout" title="Check-Out Date" required>
+                <input type="number" id="amt" placeholder="Room Rent Per Day (₹)" required>
+                <input type="text" id="remarks" placeholder="Remarks / Details">
+                <button type="submit" class="btn-block">💾 Save Check-In & Allocate Room</button>
+            </form>
         </div>
 
-        <!-- Service 4 -->
-        <div class="bah-service-item">
-            <h3><i class="fas fa-elevator"></i> Lift & HVAC Support</h3>
-            <p>Specialized AMC services for elevators and centralized AC systems ensuring safety and energy efficiency.</p>
+        <div class="table-container">
+            <div class="table-header-flex">
+                <h3>🗂️ Live Occupancy & Stay Ledger</h3>
+                <button onclick="printAllInvoices()" style="background: #2e7d32; padding: 8px 16px; font-size: 14px;">🖨️ Bulk Print All Bills</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SL / Bill No (Press No)</th>
+                        <th>Month</th>
+                        <th>Guest Details</th>
+                        <th>Room</th>
+                        <th>Dates (In/Out)</th>
+                        <th>Room Rent</th>
+                        <th>Food Bill (Food Bill No)</th>
+                        <th>Total Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
         </div>
-
-        <!-- Service 5 -->
-        <div class="bah-service-item">
-            <h3><i class="fas fa-faucet"></i> Utility Management</h3>
-            <p>Expert operation of Water Treatment (WTP) and Sewage Treatment Plants (STP) as per environmental standards.</p>
-        </div>
-
-        <!-- Service 6 -->
-        <div class="bah-service-item">
-            <h3><i class="fas fa-bolt"></i> Power Solutions</h3>
-            <p>Customized diesel generator rentals and reliable power backup management for large establishments.</p>
-        </div>
-    </div>
-    <!--service 7-->
-     <div class="bah-service-item">
-        <h3><i class="fas fa-bolt"></i>Catering Service</i></h3>
-        <p>catering services provide on-site food and beverage solutions for guests, combining residential comfort with restaurant-style hospitality. Ranging from breakfast buffets to full-service meals, these services focus on convenience, offering tailored menus for meetings, events, or daily stay requirements</p>
-     </div>
-     <!--service 7-->
-     <div class="bah-service-item">
-        <h3><i class="fas fa-bolt"></i> Manpower Solution</i></h3>
-        <p>Manpower solution services are external HR services that source, screen, and provide temporary, contract, or permanent staff to businesses. They enable firms to quickly fill vacancies, manage seasonal hiring, and handle payroll/compliance, reducing recruitment time and administrative burdens.</p>
-     </div>
-     <!--service 8-->
-     <div class="bah-service-item">
-        <h3><i class="fas fa-bolt"></i>Electrical HT & LT panel</i></h3>
-        <p>Electrical HT (High Tension) and LT (Low Tension) panel services provide essential maintenance, testing, and repair to ensure industrial/commercial power systems remain safe and operational. Services include thermal scanning, cleaning, tightening connections, relay testing, and oil testing to prevent failures. Expert technicians also handle installation, retrofitting, and energy audits, reducing downtime. </p>
-     </div>
-      <!--service 9-->
-      <div class="bah-service-item">
-       <h3><i class="fas fa-bolt"></i>Lift Management</i></h3>
-       <p>Lift management services ensure that elevators (lifts) operate safely, efficiently, and reliably in residential and commercial buildings. These services include regular maintenance, repairs, inspections, and safety compliance checks to prevent breakdowns and extend the equipment's lifespan</p>
-      </div>
-  <!--service 10-->
-  <div class="bah-service-item">
-    <h3><i class="fas fa-bolt"></i>DG Management</i></h3>
-    <p>Diesel Generator (DG) Management Service ensures the reliable, safe, and efficient operation of standby power systems. It involves proactive maintenance, monitoring, and repair to guarantee power continuity during outages. </p>
-  </div>
-  <!--service 11-->
-  <div class="bah-service-item">
-   <h3><i class="fas fa-bolt"></i>HVAC</i></h3>
-   <P> Heating, Ventilation, and Air Conditioning, referring to the systems that regulate indoor environmental comfort. They manage temperature (heating/cooling), humidity, and air purity using components like furnaces, heat pumps, filters, and ducts to ensure healthy, comfortable air</P>
-  </div>
-  
-    <div class="bah-section-header">
-        <i class="fas fa-award"></i> Why Choose Us
-    </div>
-    
-    <div style="background: #003366; color: #fff; padding: 25px; border-radius: 8px;">
-        <p style="margin-bottom: 0;">We deliver excellence through <strong>Government Project Expertise</strong>, <strong>Regulatory Compliance</strong>, and <strong>24/7 Operational Support</strong>. Our solutions are cost-effective, transparent, and focused on quality execution.</p>
-    </div>
-</div>
- <table border="1" style="width:100%; border-collapse: collapse; text-align: left; font-family: Arial, sans-serif;"> 
-    <!-- Table Header (सिर्फ एक बार आएगा) -->
-    <thead>
-        <tr style="background-color: #333; color: white;">
-            <th style="padding: 12px;">Guest House and Location</th>
-            <th style="padding: 12px;">In-charge / Manager</th>
-        </tr>
-    </thead>
-    
-    <tbody>
-        <!-- Row 1 -->
-        <tr style="background-color: #2e8c69; color: white;">
-            <td style="padding: 10px;">[Nirikshan Bhawan] Rajbansi Nagar, Patna</td>
-            <td style="padding: 10px;">Mr. Rajeev Kumar, Mr. Chunmun Kumar</td>
-        </tr>
-        
-        <!-- Row 2 -->
-        <tr style="background-color: #13a5c9; color: white;">
-            <td style="padding: 10px;">[Op Sah] Malsalami, Patna City Near patna Sahib Gurudwara</td>
-            <td style="padding: 10px;">Mr. Suraj Kumar</td>
-        </tr>
-
-        <!-- Row 3 --> 
-        <tr style="background-color: #1db47c; color: white;">
-            <td style="padding: 10px;">[Vidhan Sabha] Rajbasni Nagar Near R-Block,Saat Murti</td>
-            <td style="padding: 10px;">Dharmraj</td>
-        </tr>
-
-        <!-- Row 4 -->
-        <tr style="background-color: #1fb183; color: white;">
-            <td style="padding: 10px;">[ BITE Dariyapur] Sangrampur Block ,East Champaran</td>
-            <td style="padding: 10px;">Mr. Aashutosh Kumar</td>
-        </tr>
-
-        <!-- Row 5 -->
-        <tr style="background-color: #1cbdc2; color: white;">
-            <td style="padding: 10px;">[ESIC BIHTA] Sikandrapur, Katesar, NH-30, Bihta ,Patna</td>
-            <td style="padding: 10px;">Mr. Rakesh Kumar</td>
-        </tr>
-        
-        <!-- Row 6 -->
-        <tr style="background-color: #18b4cf; color: white;">
-            <td style="padding: 10px;">[Patna Sahib Bhawan] Behind Satya Flor Mill , Deedarganj Patna</td>
-            <td style="padding: 10px;">Mr.Rohan Yadav</td>
-        </tr>
-
-        <!-- Row 7 -->
-        <tr style="background-color: #9c4e4e; color: white;">
-            <td style="padding: 10px;">[Dashrath Manjhi] Samanpura , BIT campus , Patna</td>
-            <td style="padding: 10px;">Mr.Mukesh Kumar</td>
-        </tr>
-
-        <!-- Row 8 -->
-        <tr style="background-color: #15679a; color: white;">
-            <td style="padding: 10px;">[Bapu Tower] khagaul Road Gardanibagh ,Patna</td>
-            <td style="padding: 10px;">Mr.Rohit Kumar</td>
-        </tr>
-        <!-- Row 9 -->
-        <tr style="background-color: #15679a; color: white;">
-            <td style="padding: 10px;">[NHIB] Near Patna Airport Entry Gate</td>
-            <td style="padding: 10px;">Mr.RamanKumar</td>
-        </tr>
-        <!-- Row 10 -->
-        <tr style="background-color: #15679a; color: white;">
-            <td style="padding: 10px;">[LNJP Hospital] Shastri Nagar Patna</td>
-            <td style="padding: 10px;">Mr.Rajeev Kumar</td>
-        </tr>
-    </tbody>
-</table>
-   <!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manager List</title>
-<style>
-    /* 10 मैनेजर्स के लिए ग्रिड लेआउट */
-    .manager-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        padding: 20px;
-        justify-items: center;
-    }
-
-    /* हर मैनेजर के बॉक्स का स्टाइल */
-    .manager-card {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 10px;
-        text-align: center;
-        background-color: #f9f9f9;
-        width: 100%;
-        max-width: 250px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    /* इमेज का स्टाइल */
-    .manager-card img {
-        width: 100%;
-        height: 200px; /* सब फोटो एक बराबर ऊंचाई में दिखेंगी */
-        object-fit: cover; /* फोटो कटेगी नहीं, फिट हो जाएगी */
-        /* फोटो को गोल करने के लिए */
-        margin-bottom: 10px;
-    }
-
-    /* नाम का स्टाइल */
-    .manager-card h3 {
-        margin: 10px 0 5px;
-        font-size: 18px;
-        color: #333;
-    }
-</style>
-</head>
-<body>
-
-<div class="manager-grid">
-
-    <!-- Manager 1 -->
-    <div class="manager-card">
-        <img src="Dept.webp" alt="Manager 1">
-        <h3>Nirikshan Bhawan</h3>
     </div>
 
-    <!-- Manager 2 -->
-    <div class="manager-card">
-        <img src="opsah.jpg" alt="Manager 2">
-        <h3>Op Sah</h3>
-    </div>
-
-    <!-- Manager 3 -->
-    <div class="manager-card">
-        <img src="Vidhansabha.jpeg" alt="Manager 3">
-        <h3>Vidhan Sabha</h3>
-    </div>
-
-    <!-- Manager 4 -->
-    <div class="manager-card">
-        <img src="BiteDariyapur.webp" alt="Manager 4">
-        <h3>BITE Dariyapur</h3>
-    </div>
-
-    <!-- Manager 5 -->
-    <div class="manager-card">
-        <img src="ESICBihta.webp" alt="Manager 5">
-        <h3>ESIC Bihta</h3>
-    </div>
-
-    <!-- Manager 6 -->
-    <div class="manager-card">
-        <img src="Gurubaag.jpg" alt="Manager 6">
-        <h3>Patna Sahib Bhawan</h3>
-    </div>
-
-    <!-- Manager 7 -->
-    <div class="manager-card">
-        <img src="DashrathManjhi.jpg" alt="Manager 7">
-        <h3>DashrathManjhi</h3>
-    </div>
-
-    <!-- Manager 8 -->
-    <div class="manager-card">
-        <img src="BapuTower.jpg" alt="Manager 8">
-        <h3>Bapu Tower</h3>
-    </div>
-
-    <!-- Manager 9 -->
-    <div class="manager-card">
-        <img src="Nhib.webp" alt="Manager 9">
-        <h3>NHIB</h3>
-    </div>
-
-    <!-- Manager 10 -->
-    <div class="manager-card">
-        <img src="LNJP.png" alt="Manager 10">
-        <h3>LNJP</h3>
-    </div>
-
-</div>
-
-</body>
-</html> 
-<nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-</nav>
-<!-- ABOUT SECTION -->
-<section id="about">
-    <h2>About Us</h2>
-    <p>
-      "At Beyond Authentic Hospitality, we are dedicated to providing more than just a stay—we provide an experience. Our commitment to authentic service ensures that every guest feels welcomed and cared for, combining modern comfort with genuine local warmth. Whether you are here for leisure or business, we invite you to relax and create lasting memories with us."
-    </p>
-<h3 style="color: rosybrown; text-decoration: underline;">𝓞𝓾𝓻 𝓜𝓲𝓼𝓼𝓲𝓸𝓷</h3>
-    <p>
-        To deliver high-quality hospitality and facility services with
-        cleanliness, safety, and customer satisfaction as our top priority.
-    </p>
-
-    <h3 style="color: cadetblue; text-decoration: underline;">𝓞𝓾𝓻 𝓥𝓲𝓼𝓲𝓸𝓷</h3>
-    <p>
-        To become a trusted and leading service provider in hospitality and
-        facility management across Patna and nearby regions.
-    </p>
-
-    <h3  style="color: darkorchid; text-decoration: underline;">𝓒𝓮𝓻𝓽𝓲𝓯𝓲𝓬𝓪𝓽𝓲𝓸𝓷</h3>
-    <p>
-        ISO Certified Organization (Quality & Service Standards)
-    </p>
-
-    <h3 style="color: rgb(6, 181, 6); text-decoration: underline;">𝓜𝓪𝓷𝓪𝓰𝓮𝓶𝓮𝓷𝓽 𝓣𝓮𝓪𝓶</h3>
-    <p>
-        Our management team is led by experienced professionals ensuring
-        smooth operations, trained staff, and high service standards.
-    </p>
-
-
-</section>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f5f7fa;
-      padding: 40px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 28px;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-
-    .card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-      color: #333;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: #666;
-    }
-
-    @media(max-width: 600px) {
-      body {
-        padding: 20px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  
-
-  <div class="services">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952" alt="">
-      <h3 >General Housekeeping</h3>
-
-      <p>Daily cleaning, dusting, and maintenance services for homes and offices.</p>
- 
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="">
-      <h3>Floor Scrubbing</h3>
-      <p>Machine-based deep cleaning and polishing of all types of floors.</p>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4" alt="">
-      <h3>Water Tank Cleaning</h3>
-      <p>Safe and hygienic cleaning of overhead and underground tanks.</p>
-    </div>
-
-    <div class="card">
-      <img src="image.jpg" alt="">
-      <h3>Garden & Lawn Maintenance</h3>
-      <p>Regular care, trimming, and beautification of outdoor spaces.</p>
-
-    </div>
- <section class="services">
-  <h2>Our Services</h2>
-
-  <div class="service-box">
-    <!-- STP -->
-    <div class="card">
-      <img src="stp.jpg" alt="STP">
-      <h4>STP</h4>
-      <p>Sewage water treatment for reuse & safe disposal.</p>
-    </div>
-
-    <!-- WTP -->
-    <div class="card">
-      <img src="Wtp.jpg" alt="WTP">
-      <h4>WTP</h4>
-      <p>Clean & safe water treatment solutions.</p>
-    </div>
-  </div>
-</section>
-
-<style>
-.services {
-  padding: 20px;
-  text-align: center;
-}
-
-.services h2 {
-  font-size: 22px;
-  margin-bottom: 15px;
-}
-
-.service-box {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.card {
-  width: 200px;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 10px;
-}
-
-.card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.card h4 {
-  margin: 8px 0 5px;
-  font-size: 16px;
-}
-
-.card p {
-  font-size: 12px;
-  color: #555;
-}
-</style>
-  </div>
-
-
-
-</body>
-</html>
-<!-- SERVICES SECTION -->
-<section id="services">
-
-    
-    <h2>Our Services</h2>
-
-    <div class="container">
-
-        <div class="card">
-            <h3>General Housekeeping</h3>
-            <p>Daily cleaning, dusting, and maintenance services.</p>
+    <!-- MAIN FOOD MODAL -->
+    <div class="modal-overlay" id="foodModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🍽️ Dynamic Catering Register (Sectionized Open Entry)</h2>
+                <button type="button" onclick="closeFoodModal()" style="background:#e63946; color:white; padding: 6px 12px; border:none; cursor:pointer;">❌ Close</button>
+            </div>
+            <p style="margin-bottom: 10px; font-size:15px;">
+                Guest Name: <strong><span id="modalGuestName"></span></strong> | 
+                Stay Period: <span id="modalStayDates" style="color:#0288d1; font-weight:bold;"></span>
+            </p>
             
+            <div style="background: #f1f8e9; padding: 12px; border-radius: 5px; margin-bottom: 15px; border: 1px solid #c5e1a5;">
+                <label style="font-weight: bold; font-size: 14px; color: #33691e;">🍔 Food Bill Number / Invoice Number:</label>
+                <input type="text" id="foodBillNoField" placeholder="Enter Unique Food Bill Number" style="max-width: 300px; margin-top: 5px; display: block; border: 1px solid #7cb342;">
+            </div>
+            
+            <form id="foodBillingForm">
+                <div class="section-header-row bg-breakfast">
+                    <div>🥞 1. BREAKFAST SECTION</div>
+                    <button type="button" class="add-row-btn" onclick="addFoodRow('breakfastContainer')">+ Add Breakfast Item</button>
+                </div>
+                <div id="breakfastContainer">
+                    <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                        <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+                    </div>
+                </div>
+
+                <div class="section-header-row bg-lunch">
+                    <div>🍱 2. LUNCH SECTION</div>
+                    <button type="button" class="add-row-btn" onclick="addFoodRow('lunchContainer')">+ Add Lunch Item</button>
+                </div>
+                <div id="lunchContainer">
+                    <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                        <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+                    </div>
+                </div>
+
+                <div class="section-header-row bg-dinner">
+                    <div>🍲 3. DINNER SECTION</div>
+                    <button type="button" class="add-row-btn" onclick="addFoodRow('dinnerContainer')">+ Add Dinner Item</button>
+                </div>
+                <div id="dinnerContainer">
+                    <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                        <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+                    </div>
+                </div>
+
+                <div style="margin-top:25px; padding:15px; background:#e8f5e9; border-radius:5px; text-align:right;">
+                    <span style="font-size:18px; font-weight:bold; color:#2e7d32;">Total Catering Bill: ₹<span id="modalGrandTotal">0</span></span>
+                </div>
+
+                <button type="button" onclick="submitFoodBill()" class="btn-block" style="background:#2e7d32;">🔒 Compile & Save Dynamic Food Data</button>
+            </form>
         </div>
-
-        <div class="card">
-            <h3>Floor Scrubbing</h3>
-            <p>Machine-based deep cleaning and polishing of floors.</p>
-        </div>
-
-        <div class="card">
-            <h3>Water Tank Cleaning</h3>
-            <p>Safe and hygienic cleaning of overhead and underground tanks.</p>
-        </div>
-
-        <div class="card">
-            <h3>Garden & Lawn Maintenance</h3>
-            <p>Regular care, trimming, and beautification of outdoor spaces.</p>
-
-        </div>
-
     </div>
-</section>
 
-<div class="scrolling-container">
-    <div class="scrolling-text"> 💬 24/7 Service Available | Eco-Friendly Cleaning | Certified Staff | Personalized Catering Menu | Trusted & Verified Crew</div>
+    <!-- WRAPPER FOR SINGLE AND BULK PRINTING SYSTEM -->
+    <div id="printAreaWrapper"></div>
 </div>
-<span class="iso-badge">ISO CERTIFIED QUALITY AND FOOD SAFETY MANAGEMENT SYSTEM</span>
-<!-- CONTACT -->
-<section id="contact">
-      <!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Team Heads</title>
-<style>
-    body { font-family: Arial, sans-serif; background-color: #f4f4f4; }
-    .team-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-        padding: 20px;
-    }
-    .team-member {
-        background: #007bff;
-        color: white;
-        padding: 15px 30px;
-        position: relative;
-        font-weight: bold;
-        border-radius: 5px;
-        min-width: 150px;
-        text-align: center;
-    }
-    /* तीर का डिज़ाइन (Arrow Design) */
-    .team-member:not(:last-child)::after {
-        content: "▶";
-        position: absolute;
-        right: -20px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #007bff;
-        font-size: 20px;
-    }
-    .team-member:hover { background-color: #0056b3; }
-</style>
-</head>
-<body>
 
-<h2 style="text-align:center;">Housekeeping & Catering Team Heads</h2>
+<script>
+    const allRooms = ["F4", "F5", "F6", "F1", "F2", "F3", "G1"];
+    let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    let currentCheckoutIndex = null;
 
-<div class="team-container">
-    <ol>
-        <h2><li>𝓒𝓱𝓾𝓷𝓶𝓾𝓷 𝓴𝓾𝓶𝓪𝓻</li></h2>
-        <h2><li>𝓐𝓶𝓲𝓽 𝓚𝓾𝓶𝓪𝓻</li></h2>
-       <h2><li>𝓡𝓪𝓳𝓮𝓮𝓿 𝓚𝓾𝓶𝓪𝓻</li></h2>
-       <h2><li>𝓜𝓾𝓴𝓮𝓼𝓱 𝓴𝓾𝓶𝓪𝓻</li></h2>
-    </ol>
-     <img src="chunmunpic.jpeg"width="150" height="200">
-     <img src="Amitsir.jpeg"width="200"height="200">
-     <img src="Rajeevsir.jpeg"width="200"height="200">
-    <img src="Mukeshsir.jpeg"height="200"width="200">
-    <h2>Contact Us</h2>
-    <p>📍 Nirikshan Bhawan Rajbansi Nagar, Patna</p> 
-    <p>👤 Amit Kumar (Proprietor)</p>
-    <p>📞 +91-7050906666</p>
-    <p>Rajeev Kumar </p>
-    <p>📞+91-9828780848</p>
-    <footer class="footer">
-    <p >Thank You, Visit Again! <span style="font-size: 24px;">😊👶</span></p>
-</footer>
-<footer>
-    <p>&copy; 2026 Beyond Authentic Hospitality. All rights reserved.</p>
-</footer>
-</body>
-</html>
- 
-    
+    function getMonthName(dateString) {
+        if(!dateString) return "";
+        const date = new Date(dateString);
+        return date.toLocaleString('default', { month: 'long' });
+    }
+
+    function updateUI() {
+        const tbody = document.getElementById("tableBody");
+        tbody.innerHTML = "";
+        const todayStr = new Date().toISOString().split('T')[0];
+        let occupiedRooms = [];
+        let totalAmt = 0;
+
+        bookings.forEach(b => {
+            let roomCost = Number(b.amt) || 0;
+            let foodCost = Number(b.foodTotalCost) || 0;
+            totalAmt += (roomCost + foodCost);
+
+            if (todayStr >= b.cin && todayStr < b.cout && !b.checkedOut) {
+                if(!occupiedRooms.includes(b.room)) occupiedRooms.push(b.room);
+            }
+        });
+
+        let vacant = allRooms.filter(r => !occupiedRooms.includes(r));
+        document.getElementById("occCount").innerText = occupiedRooms.length;
+        document.getElementById("totalColl").innerText = "₹" + totalAmt;
+        document.getElementById("vacantList").innerText = vacant.length > 0 ? vacant.join(", ") : "Full";
+
+        bookings.forEach((b, i) => {
+            let foodBillTotal = Number(b.foodTotalCost) || 0;
+            let netBill = (Number(b.amt) || 0) + foodBillTotal;
+            
+            let statusBadge = b.checkedOut ? 
+                `<span class="status-checkedout">Checked Out</span>` : 
+                `<span class="status-live">Live / In-Room</span>`;
+
+            let actionButtons = `
+                <button onclick="openFoodModal(${i})" style="background:#0288d1; padding:5px 8px; font-size:12px;">🍽️ Food Menu</button>
+                <button onclick="printSingleInvoice(${i})" style="background:#5c6bc0; padding:5px 8px; font-size:12px;">🖨️ Print Bill</button> 
+                <button onclick="del(${i})" style="background:#e63946; padding:5px 8px; font-size:12px;">Delete</button>
+            `;
+
+            let displaySlAndPress = `<strong>SL-${b.sl || (i+1)}</strong> <span style="font-size:11px; display:block; color:#555;">(Press: ${b.pressNo || '-'})</span>`;
+            let displayFoodBill = `₹${foodBillTotal} <span style="font-size:11px; display:block; color:green; font-weight:normal;">(Bill: ${b.foodBillNo || 'N/A'})</span>`;
+
+            tbody.innerHTML += `<tr>
+                <td>${displaySlAndPress}</td>
+                <td><span class="badge-month">${b.month}</span></td>
+                <td style="text-align:left;">
+                    <div style="font-weight:bold; color:#0f3460;">${b.guest}</div>
+                    <div style="font-size:11px; color:#666;">Dept: ${b.dept || '-'}</div>
+                </td>
+                <td><span class="badge-room">${b.room}</span></td>
+                <td style="font-size:12px; text-align:left; white-space:nowrap;">
+                    <span style="color:green;">➡️ In: ${b.cin}</span><br>
+                    <span style="color:red;">⬅️ Out: ${b.cout}</span>
+                </td>
+                <td>₹${b.amt}</td>
+                <td style="color:#b87333; font-weight:bold;">${displayFoodBill}</td>
+                <td><span class="badge-amt">₹${netBill}</span></td>
+                <td>${statusBadge}</td>
+                <td class="no-print" style="white-space:nowrap;">${actionButtons}</td>
+            </tr>`;
+        });
+    }
+
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        let selectedRoom = document.getElementById("room").value;
+        let newCin = document.getElementById("cin").value;
+        let newCout = document.getElementById("cout").value;
+
+        let isAlreadyBooked = false;
+        let conflictingGuest = "";
+        let bookedRange = "";
+
+        for (let i = 0; i < bookings.length; i++) {
+            let b = bookings[i];
+            if (b.room === selectedRoom && !b.checkedOut) {
+                if (newCin < b.cout && newCout > b.cin) {
+                    isAlreadyBooked = true;
+                    conflictingGuest = b.guest;
+                    bookedRange = `${b.cin} to ${b.cout}`;
+                    break;
+                }
+            }
+        }
+
+        if (isAlreadyBooked) {
+            alert(`⚠️ Error: This Room and This Date is Already Booked!\n\nRoom ${selectedRoom} pehle se hi ${conflictingGuest} ke liye (${bookedRange}) tak booked hai.`);
+            return;
+        }
+
+        let generatedSl = bookings.length + 1;
+
+        let newBooking = {
+            sl: generatedSl.toString(), 
+            pressNo: document.getElementById("pressNo").value,
+            guest: document.getElementById("guest").value,
+            dept: document.getElementById("dept").value,
+            ref: document.getElementById("ref").value,
+            room: selectedRoom,
+            cin: newCin,
+            cout: newCout,
+            amt: document.getElementById("amt").value,
+            remarks: document.getElementById("remarks").value,
+            month: getMonthName(newCin),
+            checkedOut: false,
+            foodTotalCost: 0,
+            foodBillNo: "", 
+            breakfastItems: [],
+            lunchItems: [],
+            dinnerItems: []
+        };
+
+        bookings.push(newBooking);
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+        updateUI();
+        document.getElementById("bookingForm").reset();
+    });
+
+    function del(index) {
+        if(confirm("Are you sure you want to delete this record?")) {
+            bookings.splice(index, 1);
+            localStorage.setItem("bookings", JSON.stringify(bookings));
+            updateUI();
+        }
+    }
+
+    function addFoodRow(containerId, dateValue="", itemValue="", rateValue=0, qtyValue=0) {
+        const container = document.getElementById(containerId);
+        const uniqueId = "row_" + Date.now() + "_" + Math.floor(Math.random() * 100);
+        
+        let defaultDate = dateValue;
+        if(!defaultDate && currentCheckoutIndex !== null) {
+            defaultDate = bookings[currentCheckoutIndex].cin;
+        }
+
+        const rowDiv = document.createElement("div");
+        rowDiv.className = "food-grid-row";
+        rowDiv.id = uniqueId;
+        
+        rowDiv.innerHTML = `
+            <input type="date" class="f-date" value="${defaultDate}" required>
+            <input type="text" class="f-name" placeholder="Item Name Description" value="${itemValue}" required>
+            <input type="number" class="f-rate" placeholder="Rate" min="0" value="${rateValue || ''}" oninput="calcOpenTotals()" required>
+            <input type="number" class="f-qty" placeholder="Qty" min="1" value="${qtyValue || ''}" oninput="calcOpenTotals()" required>
+            <input type="text" class="f-amt" value="${rateValue * qtyValue || 0}" readonly style="background:#eee;">
+            <button type="button" class="del-row-btn" onclick="document.getElementById('${uniqueId}').remove(); calcOpenTotals();">X</button>
+        `;
+        container.appendChild(rowDiv);
+    }
+
+    function openFoodModal(index) {
+        currentCheckoutIndex = index;
+        let b = bookings[index];
+        document.getElementById("modalGuestName").innerText = b.guest;
+        document.getElementById("modalStayDates").innerText = b.cin + " to " + b.cout;
+        document.getElementById("foodBillNoField").value = b.foodBillNo || "";
+        
+        document.getElementById("breakfastContainer").innerHTML = `
+            <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+            </div>`;
+        document.getElementById("lunchContainer").innerHTML = `
+            <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+            </div>`;
+        document.getElementById("dinnerContainer").innerHTML = `
+            <div class="food-grid-row" style="font-weight: bold; font-size:12px; color:#555;">
+                <div>Date</div><div>Item Name / Description</div><div>Rate (₹)</div><div>Qty</div><div>Amount</div><div></div>
+            </div>`;
+        
+        if (b.breakfastItems && b.breakfastItems.length > 0) {
+            b.breakfastItems.forEach(it => addFoodRow('breakfastContainer', it.date, it.name, it.rate, it.qty));
+        } else {
+            addFoodRow('breakfastContainer', b.cin, 'Bread Toast / Omelette', 70, 2);
+            addFoodRow('breakfastContainer', b.cin, 'Tea / Coffee', 20, 4);
+        }
+        
+        if (b.lunchItems && b.lunchItems.length > 0) {
+            b.lunchItems.forEach(it => addFoodRow('lunchContainer', it.date, it.name, it.rate, it.qty));
+        } else {
+            addFoodRow('lunchContainer', b.cin, 'Rice Veg Thali', 120, 2);
+            addFoodRow('lunchContainer', b.cin, 'Mutton Curry Extra', 250, 1);
+        }
+        
+        if (b.dinnerItems && b.dinnerItems.length > 0) {
+            b.dinnerItems.forEach(it => addFoodRow('dinnerContainer', it.date, it.name, it.rate, it.qty));
+        } else {
+            addFoodRow('dinnerContainer', b.cin, 'Roti Tadka Special', 100, 2);
+            addFoodRow('dinnerContainer', b.cin, 'Chicken Dehati Plate', 220, 1);
+        }
+
+        calcOpenTotals();
+        document.getElementById("foodModal").style.display = "flex";
+    }
+
+    function closeFoodModal() {
+        document.getElementById("foodModal").style.display = "none";
+        currentCheckoutIndex = null;
+    }
+
+    function calcOpenTotals() {
+        let grandTotal = 0;
+        ['breakfastContainer', 'lunchContainer', 'dinnerContainer'].forEach(id => {
+            const rows = document.getElementById(id).querySelectorAll(".food-grid-row");
+            rows.forEach(row => {
+                const rateInp = row.querySelector(".f-rate");
+                const qtyInp = row.querySelector(".f-qty");
+                const amtInp = row.querySelector(".f-amt");
+                if(rateInp && qtyInp && amtInp) {
+                    let r = Number(rateInp.value) || 0;
+                    let q = Number(qtyInp.value) || 0;
+                    let total = r * q;
+                    amtInp.value = total;
+                    grandTotal += total;
+                }
+            });
+        });
+        document.getElementById("modalGrandTotal").innerText = grandTotal;
+    }
+
+    function getSectionItems(containerId) {
+        let array = [];
+        const rows = document.getElementById(containerId).querySelectorAll(".food-grid-row");
+        rows.forEach(row => {
+            const dateInp = row.querySelector(".f-date");
+            const nameInp = row.querySelector(".f-name");
+            const rateInp = row.querySelector(".f-rate");
+            const qtyInp = row.querySelector(".f-qty");
+            if(nameInp && rateInp && qtyInp && dateInp) {
+                let qty = Number(qtyInp.value) || 0;
+                let rate = Number(rateInp.value) || 0;
+                if(qty > 0 && nameInp.value.trim() !== "") {
+                    array.push({ 
+                        date: dateInp.value, 
+                        name: nameInp.value.trim(), 
+                        rate: rate, 
+                        qty: qty, 
+                        total: rate * qty 
+                    });
+                }
+            }
+        });
+        return array;
+    }
+
+    function submitFoodBill() {
+        if(currentCheckoutIndex === null) return;
+        
+        let foodBillInput = document.getElementById("foodBillNoField").value.trim();
+        if(!foodBillInput) {
+            alert("Please enter a Food Bill Number before compiling data!");
+            return;
+        }
+
+        let bf = getSectionItems('breakfastContainer');
+        let ln = getSectionItems('lunchContainer');
+        let dn = getSectionItems('dinnerContainer');
+
+        let total = 0;
+        bf.forEach(x => total += x.total);
+        ln.forEach(x => total += x.total);
+        dn.forEach(x => total += x.total);
+
+        bookings[currentCheckoutIndex].breakfastItems = bf;
+        bookings[currentCheckoutIndex].lunchItems = ln;
+        bookings[currentCheckoutIndex].dinnerItems = dn;
+        bookings[currentCheckoutIndex].foodTotalCost = total;
+        bookings[currentCheckoutIndex].foodBillNo = foodBillInput; 
+
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+        updateUI();
+        closeFoodModal();
+        alert("Food data compiled successfully!");
+    }
+
+    function getCfgValues() {
+        return {
+            address: document.getElementById("cfgAddress").value,
+            owner: document.getElementById("cfgOwner").value,
+            mobile: document.getElementById("cfgMobile").value,
+            email: document.getElementById("cfgEmail").value,
+            gst: document.getElementById("cfgGst").value,
+            pan: document.getElementById("cfgPan").value,
+            reg: document.getElementById("cfgReg").value,
+            sac: document.getElementById("cfgSac").value,
+            tel: document.getElementById("cfgTel").value,
+            bankName: document.getElementById("cfgBankName").value,
+            bankAcc: document.getElementById("cfgBankAcc").value,
+            bankIfsc: document.getElementById("cfgBankIfsc").value
+        };
+    }
+
+    // GENERATE HTML STRUCTURE FOR INVOICE BLOCK
+    function buildInvoiceHTML(b, index, cfg) {
+        let perDayRent = Number(b.amt) || 0;
+        let foodBillTotal = Number(b.foodTotalCost) || 0;
+        let dynamicGrandTotal = perDayRent + foodBillTotal;
+
+        let foodRowsHtml = "";
+        if(b.breakfastItems && b.breakfastItems.length > 0) {
+            foodRowsHtml += `<tr class="tally-category-header"><td colspan="5">🥞 Breakfast Menu Charges</td></tr>`;
+            b.breakfastItems.forEach(item => {
+                foodRowsHtml += `<tr><td>${item.date}</td><td style="text-align:left; padding-left:10px;">${item.name}</td><td>${item.qty}</td><td>₹${item.rate}</td><td style="text-align:right; padding-right:10px;">₹${item.total}</td></tr>`;
+            });
+        }
+        if(b.lunchItems && b.lunchItems.length > 0) {
+            foodRowsHtml += `<tr class="tally-category-header"><td colspan="5">🍱 Lunch Menu Charges</td></tr>`;
+            b.lunchItems.forEach(item => {
+                foodRowsHtml += `<tr><td>${item.date}</td><td style="text-align:left; padding-left:10px;">${item.name}</td><td>${item.qty}</td><td>₹${item.rate}</td><td style="text-align:right; padding-right:10px;">₹${item.total}</td></tr>`;
+            });
+        }
+        if(b.dinnerItems && b.dinnerItems.length > 0) {
+            foodRowsHtml += `<tr class="tally-category-header"><td colspan="5">🍲 Dinner Menu Charges</td></tr>`;
+            b.dinnerItems.forEach(item => {
+                foodRowsHtml += `<tr><td>${item.date}</td><td style="text-align:left; padding-left:10px;">${item.name}</td><td>${item.qty}</td><td>₹${item.rate}</td><td style="text-align:right; padding-right:10px;">₹${item.total}</td></tr>`;
+            });
+        }
+
+        return `
+        <div class="tallyInvoiceBlock">
+            <div class="tally-title-block"><h2>INVOICE / BILL</h2></div>
+            <div class="label-grid">
+                <div class="label-cell-full"><span class="lbl">Canteen Address:</span> <span>${cfg.address}</span></div>
+                <div class="label-cell"><span class="lbl">Proprietor Name:</span> <span>${cfg.owner}</span></div>
+                <div class="label-cell"><span class="lbl">Regd Office:</span> <span>Patna, Bihar</span></div>
+                <div class="label-cell"><span class="lbl">Email Id:</span> <span>${cfg.email}</span></div>
+                <div class="label-cell"><span class="lbl">Mobile No:</span> <span>${cfg.mobile}</span></div>
+                <div class="label-cell"><span class="lbl">GSTIN No:</span> <span>${cfg.gst}</span></div>
+                <div class="label-cell"><span class="lbl">PAN Card No:</span> <span>${cfg.pan}</span></div>
+                <div class="label-cell"><span class="lbl">Registration No:</span> <span>${cfg.reg}</span></div>
+                <div class="label-cell"><span class="lbl">SAC / Code:</span> <span>${cfg.sac}</span></div>
+                <div class="label-cell-full"><span class="lbl">Guest Name:</span> <strong>${b.guest}</strong></div>
+                <div class="label-cell"><span class="lbl">Room Allocated:</span> <span>Room ${b.room}</span></div>
+                <div class="label-cell"><span class="lbl">Voucher/Press No:</span> <span>${b.pressNo || '-'}</span></div>
+                <div class="label-cell"><span class="lbl">Check-In Date:</span> <span>${b.cin}</span></div>
+                <div class="label-cell"><span class="lbl">Check-Out Date:</span> <span>${b.cout}</span></div>
+                <div class="label-cell"><span class="lbl">Department/Dept:</span> <span>${b.dept || '-'}</span></div>
+                <div class="label-cell"><span class="lbl">Reference By:</span> <span>${b.ref || '-'}</span></div>
+                <div class="label-cell-full"><span class="lbl">Food Bill No:</span> <span>${b.foodBillNo || 'N/A'}</span></div>
+            </div>
+            
+            <table class="tally-table">
+                <thead>
+                    <tr>
+                        <th style="width:120px;">Date</th>
+                        <th>Service / Item Description</th>
+                        <th style="width:70px;">Qty</th>
+                        <th style="width:100px;">Rate</th>
+                        <th style="width:120px; text-align:right; padding-right:10px;">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${b.cin}</td>
+                        <td style="text-align:left; padding-left:10px;">Room Rent Stay Charges (Room: ${b.room})</td>
+                        <td>1</td>
+                        <td>₹${perDayRent}</td>
+                        <td style="text-align:right; padding-right:10px;">₹${perDayRent}</td>
+                    </tr>
+                    ${foodRowsHtml}
+                    <tr class="tally-total-row">
+                        <td colspan="4">GRAND TOTAL NET PAYABLE AMOUNT:</td>
+                        <td style="padding-right:10px;">₹${dynamicGrandTotal}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="bank-details-box">
+                <div class="bank-row"><strong>Bank Remittance Details:</strong></div>
+                <div class="bank-row"><span style="display:inline-block; width:130px;">Account Name:</span> ${cfg.bankName}</div>
+                <div class="bank-row"><span style="display:inline-block; width:130px;">Account Number:</span> ${cfg.bankAcc}</div>
+                <div class="bank-row"><span style="display:inline-block; width:130px;">Bank IFSC Code:</span> ${cfg.bankIfsc}</div>
+            </div>
+
+            <div class="tally-sign-box">
+                <div>Guest Signature</div>
+                <div>Authorized Signatory<br><small>For Beyond Authentic Hospitality</small></div>
+            </div>
+        </div>`;
+    }
+
+    function printSingleInvoice(index) {
+        let b = bookings[index];
+        let cfg = getCfgValues();
+        let wrapper = document.getElementById("printAreaWrapper");
+        
+        wrapper.innerHTML = buildInvoiceHTML(b, index, cfg);
+        
+        // Soft-save checked-out state 
+        bookings[index].checkedOut = true;
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+        updateUI();
+
+        window.print();
+    }
+
+    function printAllInvoices() {
+        if(bookings.length === 0) {
+            alert("No data records available to print!");
+            return;
+        }
+        let cfg = getCfgValues();
+        let wrapper = document.getElementById("printAreaWrapper");
+        let completeHtml = "";
+
+        bookings.forEach((b, index) => {
+            completeHtml += buildInvoiceHTML(b, index, cfg);
+            bookings[index].checkedOut = true;
+        });
+
+        wrapper.innerHTML = completeHtml;
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+        updateUI();
+
+        window.print();
+    }
+
+    // Initialize application layout
+    updateUI();
 </script>
 </body>
-                </html>
+</html>
